@@ -1,0 +1,67 @@
+import React from 'react'
+import styles from "./topDestination.module.scss";
+import Image from 'next/image';
+import Arrow from '../SVG/Arrow';
+
+const cards = [
+  {
+    id: 1, imageSrc: '/topDestination/1.png', name: 'Mount Fuji', reviews: 245
+  },
+  { id: 2, imageSrc: '/topDestination/2.png', name: 'Mount Everest', reviews: 320 },
+  { id: 3, imageSrc: '/topDestination/3.png', name: 'Grand Canyon', reviews: 180 },
+  { id: 4, imageSrc: '/topDestination/4.png', name: 'Grand Canyon', reviews: 180 },
+  { id: 5, imageSrc: '/topDestination/5.png', name: 'Grand Canyon', reviews: 180 },
+  { id: 6, imageSrc: '/topDestination/6.png', name: 'Grand Canyon', reviews: 180 }
+
+]
+
+
+
+const TopDestination = () => {
+  return (
+    <div className={styles.topDestination}>
+      <div className={styles.container}>
+        <div className={styles.titles}>
+          <h2>Top Destination</h2>
+          <h3>Not Sure Where To Start ?</h3>
+          <p>See where others are travelling and follow their trails</p>
+        </div>
+
+        <div className={styles.content}>
+          <div className={styles.cards}>
+
+            {
+              cards.map((e) => {
+                console.log(e);
+                return (
+                  <div className={styles.card} key={e.id}>
+                    <div className={styles[`image-container`]}>
+                      <Image src={e.imageSrc} alt='image' fill className={styles.image} />
+                    </div>
+                    <div className={styles.detail}>
+                      <div className={styles[`detail-titles`]}>
+                        <h6>{e.name}</h6>
+                        <p>{e.reviews}reviews</p>
+                      </div>
+
+                      <button>
+                        Explore
+                        <Arrow />
+                      </button>
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  )
+}
+
+export default TopDestination
