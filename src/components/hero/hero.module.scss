@@ -1,72 +1,164 @@
-@use '/src/app/variables.scss' as *;
+@use "/src/app/variables.scss" as *;
 
+.hero {
+  background-image: url("../../../public/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-.hero{
-    background-image: url('../../../public/bg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  .content {
+    // height: (calc(100vh - 14rem));
+    // height: 100vh;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: map-get($colors, text);
 
+    .container {
+      display: flex;
+      width: 100%;
 
-    .content{
-        height: (calc(100vh - 14rem));
-        padding: 2rem 4rem;
+      height: 100%;
+      flex-direction: column;
+      gap: 4rem;
+
+      .top {
         display: flex;
-        align-items: center;
-        border: 1px solid red;
 
-        .container{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
+        .left {
+          flex: 1;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
 
-            .left{
-                flex: 1;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
+          .titles {
+            width: 80%;
 
-             
-                .titles{
-                    border: 1px solid red;
-                    width: 80%;
-    
-                    h1{
-                        font-size: 5rem;
-                        color: map-get($colors, text);
-                    }
-    
-                    p{
-                        font-size: 2rem;
-                        color: map-get($colors, text);
-                    }
-                }
-    
-                .timeline-map{
-                    svg{
-                        width: 100%;
-                    }
-                }
+            h1 {
+              font-size: 7rem;
             }
-    
-            .right{
-               flex: 1;
-               height: 100%;
 
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-    
-                .map{
-                    .image{
-                        width: 100%;
-                    }
-                }
-    
+            p {
+              font-size: 2rem;
             }
+          }
         }
 
-      
+        .right {
+          flex: 1;
+          height: 100%;
+
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+
+          .map {
+            .image {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .bottom {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .timeline {
+          position: relative;
+          width: 50%;
+
+          .map {
+            width: 100%;
+            svg {
+              width: 100%;
+            }
+          }
+
+          .points {
+            display: flex;
+            align-items: center;
+            position: absolute;
+
+            svg {
+              width: 5rem;
+            }
+
+            span {
+              font-size: 1.6rem;
+            }
+          }
+
+          & > :nth-child(1) {
+            bottom: -20%;
+            left: 28%;
+          }
+
+          & > :nth-last-child(2) {
+            right: 5%;
+            bottom: 0%;
+          }
+
+          & > :nth-last-child(3) {
+            left: 50%;
+            top: -20%;
+          }
+        }
+      }
+
+      .search-box {
+        backdrop-filter: blur(5px);
+        padding: 2rem;
+        margin-top: 4rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .tabs {
+          border: 1px solid green;
+          width: 100%;
+
+          ul{
+            display: flex;
+            align-items: center;justify-content: center;
+            width: 100%;
+
+            li{
+              font-size: 1.6rem;
+              border: 1px solid red;
+              flex: 1;
+            }
+          }
+        }
+
+        &-container {
+        border: 1px solid red;
+          color: black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+
+        
+          .items{
+            border: 1px solid red;
+            flex: 1;
+
+            input{
+              width: 100%;
+            }
+
+            button{
+              width: 100%;
+            }
+          }
+        }
+      }
     }
+  }
 }
