@@ -56,29 +56,29 @@ const Hero = () => {
             </div>
 
             <div className={styles[`search-box`]}>
-              <div className={styles.tabs}>
-                <ul>
-                  <li>Flights</li>
-                  <li>Hotels</li>
-                  <li>Cars</li>
-                </ul>
-              </div>
+              <ul className={styles.tabs}>
+                <li className={`${styles.active}`}>Flights</li>
+                <li>Hotels</li>
+                <li>Cars</li>
+              </ul>
               <div className={styles[`search-box-container`]}>
-                <div className={styles.items}>
-                  <input type="text" placeholder="From" />
-                </div>
-                <div className={styles.items}>
-                  <input type="text" placeholder="To" />
-                </div>
-                <div className={styles.items}>
-                  <input type="text" placeholder="Date" />
-                </div>
-                <div className={styles.items}>
-                  <input type="text" placeholder="Passengers" />
-                </div>
-                <div className={styles.items}>
-                  <button>Search</button>
-                </div>
+                <ul>
+                  <li className={`${styles.items}`}>
+                    <input type="text" placeholder="From" />
+                  </li>
+                  <li className={styles.items}>
+                    <input type="text" placeholder="From" />
+                  </li>
+                  <li className={styles.items}>
+                    <input type="text" placeholder="From" />
+                  </li>
+                  <li className={styles.items}>
+                    <input type="text" placeholder="From" />
+                  </li>
+                  <li className={styles.items}>
+                    <button>Search</button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
