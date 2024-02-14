@@ -6,13 +6,13 @@ import Favourite from '../SVG/Favourite';
 
 const cards = [
   {
-    id: 1, imageSrc: '/topDestination/1.png', name: 'Mount Fuji', reviews: 245
+    id: 1, imageSrc: '/topDestination/1.png', name: 'Paris', reviews: 245
   },
-  { id: 2, imageSrc: '/topDestination/2.png', name: 'Mount Everest', reviews: 320 },
-  { id: 3, imageSrc: '/topDestination/3.png', name: 'Grand Canyon', reviews: 180 },
-  { id: 4, imageSrc: '/topDestination/4.png', name: 'Grand Canyon', reviews: 180 },
-  { id: 5, imageSrc: '/topDestination/5.png', name: 'Grand Canyon', reviews: 180 },
-  { id: 6, imageSrc: '/topDestination/6.png', name: 'Grand Canyon', reviews: 180 }
+  { id: 2, imageSrc: '/topDestination/2.png', name: 'Mount fuji', reviews: 320 },
+  { id: 3, imageSrc: '/topDestination/3.png', name: 'Bali', reviews: 180 },
+  { id: 4, imageSrc: '/topDestination/4.png', name: 'Switzerland', reviews: 180 },
+  { id: 5, imageSrc: '/topDestination/5.png', name: 'Tokyo', reviews: 180 },
+  { id: 6, imageSrc: '/topDestination/6.png', name: 'Berlin', reviews: 180 }
 
 ]
 
