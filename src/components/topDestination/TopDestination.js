@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./topDestination.module.scss";
 import Image from 'next/image';
 import Arrow from '../SVG/Arrow';
+import Favourite from '../SVG/Favourite';
 
 const cards = [
   {
@@ -38,18 +39,26 @@ const TopDestination = () => {
                     <div className={styles[`image-container`]}>
                       <Image src={e.imageSrc} alt='image' fill className={styles.image} />
                     </div>
+                   
                     <div className={styles.detail}>
+                      <div className={styles.fav}>
+                      <Favourite />
+                      </div>
+                     
                       <div className={styles[`detail-titles`]}>
                         <h6>{e.name}</h6>
                         <p>{e.reviews}reviews</p>
                       </div>
-
-                      <button>
+                      <div className={styles.btn}>
+                      <button >
                         Explore
                         <Arrow />
                       </button>
+                      </div>
                     </div>
+                    
                   </div>
+                  
                 )
               })
             }
