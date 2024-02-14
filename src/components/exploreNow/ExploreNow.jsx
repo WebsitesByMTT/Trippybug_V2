@@ -19,7 +19,12 @@ const ExploreNow = () => {
         <div className={styles.content}>
           <div className={styles.left}>
             <div className={styles[`image-container`]}>
-              <Image src={"/exploreNow/1.png"} fill className={styles.image} />
+              <Image
+                src={"/exploreNow/1.png"}
+                fill
+                className={styles.image}
+                alt="explore-now-image"
+              />
             </div>
             <div className={styles.detail}>
               <div className={styles.location}>
@@ -58,6 +63,7 @@ const ExploreNow = () => {
                       src={"/exploreNow/2.png"}
                       fill
                       className={styles.image}
+                      alt="explore-now-image"
                     />
                   </div>
                 </div>
@@ -67,6 +73,7 @@ const ExploreNow = () => {
                       src={"/exploreNow/3.png"}
                       fill
                       className={styles.image}
+                      alt="explore-now-image"
                     />
                   </div>
                 </div>
