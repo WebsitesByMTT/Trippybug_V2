@@ -2,7 +2,15 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .explore-now {
-  padding: 8rem;
+  padding: 8rem 4rem;
+
+  @include media.for-greater-than-medium {
+    padding: 8rem 6rem;
+  }
+
+  @include media.for-greater-than-large {
+    padding: 8rem;
+  }
 
   .container {
     display: flex;
@@ -235,6 +243,7 @@
                 top: -50%;
                 left: -7%;
                 z-index: -1;
+                transform: scale(1);
                 transition: transform 0.2s ease-in-out;
                 cursor: pointer;
               }
@@ -245,12 +254,14 @@
 
               &:hover {
                 .circle {
-                  transform: scale(1.1) translateX(100%);
+                  transform: scale(0) translateX(100%);
                 }
 
                 .arrow {
-                  transform: translateX(100%);
-                  transition-delay: 2s;
+                  transform: translateX(20%);
+                  path {
+                    fill: #ff991a;
+                  }
                 }
               }
             }
