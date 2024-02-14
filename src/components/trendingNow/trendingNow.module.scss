@@ -3,6 +3,7 @@
 
 .trending-now {
   padding: 8rem 4rem;
+  position: relative;
 
   @include media.for-greater-than-medium {
     padding: 8rem 6rem;
@@ -44,25 +45,31 @@
       }
     }
 
+
+
     .content {
+      border: 1px solid red;
+      position: relative;
+
       .cards {
         display: flex;
         justify-content: flex-start;
         gap: 2rem;
         overflow-x: scroll;
         scroll-snap-type: x mandatory;
+
         // animation: scrollCards 20s linear infinite;
 
-      //   @keyframes scrollCards {
-      //     0% {
-      //       transform: translateX(0);
-      //     }
-      //     100% {
-      //       transform: translateX(-100%); 
-      //     }
-      //   }
-      // }
-      
+        //   @keyframes scrollCards {
+        //     0% {
+        //       transform: translateX(0);
+        //     }
+        //     100% {
+        //       transform: translateX(-100%); 
+        //     }
+        //   }
+        // }
+
 
         .card {
           min-width: 34.9rem;
@@ -84,6 +91,7 @@
 
               border-radius: 1.6rem;
               overflow: hidden;
+
               .image {
                 width: 100%;
                 height: 100%;
@@ -104,9 +112,36 @@
                 color: #757474;
               }
             }
+
           }
+
         }
       }
+
+      .leftbtn {
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .rightbtn {
+        position: absolute;
+        top: 50%;
+        right: -2%;
+        transform: translate(0%, -50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+
+      }
+
+
     }
+
   }
+
 }
