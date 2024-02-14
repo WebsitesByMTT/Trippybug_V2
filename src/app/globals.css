@@ -17,6 +17,8 @@ a {
 html {
   font-size: 62.5%;
   /* 10px */
+  font-size: 62.5%;
+  /* 10px */
 }
 
 body {
@@ -28,6 +30,29 @@ body {
   html {
     font-size: 50%;
     /* 8px */
+    font-size: 50%;
+    /* 8px */
+  }
+}
+
+/* Font size for screens that are 480px wide or less */
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 50%;
+    /* 6.4px */
+  }
+}
+
+@media screen and (max-width: 370px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  html {
+    font-size: 40%;
+
   }
 }
 
