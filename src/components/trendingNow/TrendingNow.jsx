@@ -1,52 +1,12 @@
 import Image from "next/image";
 import styles from "./trendingNow.module.scss";
+import { getPostsByCategoryName } from "@/app/lib/data";
+import Link from "next/link";
 
-const data = [
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/1.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/2.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/1.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/2.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/1.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/2.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/1.png",
-  },
-  {
-    title: "TOP 10 Indian Forts Not to Miss",
-    desc: "Unevil indian forts with majestic, royal places and captivating histories....",
-    img: "/trendingNow/2.png",
-  },
-];
-
-const TrendingNow = () => {
+const TrendingNow = async () => {
+  const trendingBlogs = await getPostsByCategoryName("trending");
+  const data = trendingBlogs.edges;
   return (
-    
     <div className={styles[`trending-now`]}>
       <div className={styles.container}>
         <div className={styles.titles}>
@@ -60,32 +20,33 @@ const TrendingNow = () => {
 
         <div className={styles.content}>
           <div className={styles.cards}>
-            {data.map((item, index) => (
+            {data.map((post, index) => (
               <div className={styles.card} key={index}>
                 <div className={styles[`card-container`]}>
                   <div className={styles[`image-container`]}>
                     <Image
-                      src={item.img}
-                      alt={item.title}
+                      src={post?.node?.featuredImage?.node?.sourceUrl}
+                      alt={post?.node?.title}
                       fill
                       className={styles.image}
                     />
                   </div>
 
                   <div className={styles.detail}>
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-                    
+                    <h4>{post?.node?.title}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }}
+                      className={styles.desc}
+                    />
+                    <Link href={post?.node?.slug} className={styles.more}>
+                      More
+                    </Link>
                   </div>
-                  
                 </div>
               </div>
-              
             ))}
-          
           </div>
         </div>
-        
       </div>
     </div>
   );
