@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
-        <div className={styles.logo}>
+        <Link href={"/"} className={styles.logo}>
           <Image
             className={styles.image}
             src={"/logo.svg"}
@@ -14,7 +14,7 @@ const Navbar = () => {
             height={109}
             alt="logo"
           />
-        </div>
+        </Link>
         <ul className={styles.links}>
           <li>
             <Link href={"/flights "}>Flights</Link>
