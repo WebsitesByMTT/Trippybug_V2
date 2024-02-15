@@ -3,7 +3,7 @@ import styles from "./exploreNow.module.scss";
 import Favourite from "../SVG/Favourite";
 import LocationMarker from "../SVG/LocationMarker";
 import { getPostsByCategoryName } from "@/app/lib/data";
-
+import Cards from "./cards/Cards";
 const ExploreNow = async () => {
   const exploreTheWorld = await getPostsByCategoryName("explore-the-world");
   const data = exploreTheWorld.edges;
@@ -57,6 +57,7 @@ const ExploreNow = async () => {
                 <span>more</span>
               </p>
             </div>
+            .
 
             <div className={styles[`right-content`]}>
               <div className={styles.cards}>
@@ -97,6 +98,9 @@ const ExploreNow = async () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className={styles.content}>
+<Cards />
         </div>
       </div>
     </div>
