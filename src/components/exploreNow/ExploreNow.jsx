@@ -2,8 +2,11 @@ import Image from "next/image";
 import styles from "./exploreNow.module.scss";
 import Favourite from "../SVG/Favourite";
 import LocationMarker from "../SVG/LocationMarker";
+import { getPostsByCategoryName } from "@/app/lib/data";
 
-const ExploreNow = () => {
+const ExploreNow = async () => {
+  const exploreTheWorld = await getPostsByCategoryName("explore-the-world");
+  const data = exploreTheWorld.edges;
   return (
     <div className={styles[`explore-now`]}>
       <div className={styles.container}>
@@ -19,7 +22,12 @@ const ExploreNow = () => {
         <div className={styles.content}>
           <div className={styles.left}>
             <div className={styles[`image-container`]}>
-              <Image src={"/exploreNow/1.png"} fill className={styles.image} />
+              <Image
+                src={"/exploreNow/1.png"}
+                fill
+                className={styles.image}
+                alt="explore-now-image"
+              />
             </div>
             <div className={styles.detail}>
               <div className={styles.location}>
@@ -52,24 +60,18 @@ const ExploreNow = () => {
 
             <div className={styles[`right-content`]}>
               <div className={styles.cards}>
-                <div className={styles.card}>
-                  <div className={styles[`image-container`]}>
-                    <Image
-                      src={"/exploreNow/2.png"}
-                      fill
-                      className={styles.image}
-                    />
+                {data.map((post, index) => (
+                  <div className={styles.card} key={post?.node?.postId}>
+                    <div className={styles[`image-container`]}>
+                      <Image
+                        src={post?.node?.featuredImage?.node?.sourceUrl}
+                        fill
+                        className={styles.image}
+                        alt={post?.node?.title}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className={styles.card}>
-                  <div className={styles[`image-container`]}>
-                    <Image
-                      src={"/exploreNow/3.png"}
-                      fill
-                      className={styles.image}
-                    />
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div className={styles.button}>

@@ -8,6 +8,9 @@ const Hero = () => {
   return (
     <>
       <div className={styles.hero}>
+        <div className={styles[`bg-container`]}>
+          <Image src={"/bg.png"} fill className={styles.bg} alt="hero" />
+        </div>
         <Navbar />
         <div className={styles.content}>
           <div className={styles.container}>

@@ -140,6 +140,7 @@
 
       .right {
         flex: 1;
+        min-width: 50%;
         // padding: 2rem;
 
         display: flex;
@@ -179,15 +180,19 @@
           gap: 4rem;
 
           .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
             gap: 4rem;
 
             .card {
-              background-color: whitesmoke;
-              border-radius: 1rem;
+              flex: 0 0 100%;
+              flex-basis: calc(50% - 2rem);
+              scroll-snap-align: start;
               overflow: hidden;
+              border-radius: 1rem;
               cursor: pointer;
+              // min-width: 26.7rem;
 
               &:hover {
                 .image-container {
