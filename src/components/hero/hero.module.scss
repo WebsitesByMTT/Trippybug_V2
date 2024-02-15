@@ -67,11 +67,13 @@
             }
 
             h1 {
-              font-size: 7rem;
+              font-size: 5rem;
               text-align: center;
 
               @include media.for-greater-than-medium() {
                 text-align: left;
+                font-size: 7rem;
+
               }
             }
 
