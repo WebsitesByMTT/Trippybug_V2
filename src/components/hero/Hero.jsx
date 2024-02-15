@@ -3,6 +3,7 @@ import styles from "./hero.module.scss";
 import Navbar from "../navbar/Navbar";
 import TimelineMap from "../SVG/TimelineMap";
 import LocationMarker from "../SVG/LocationMarker";
+import SearchBox from "../searchBox/searchBox";
 
 const Hero = () => {
   return (
@@ -58,32 +59,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className={styles[`search-box`]}>
-              <ul className={styles.tabs}>
-                <li className={`${styles.active}`}>Flights</li>
-                <li>Hotels</li>
-                <li>Cars</li>
-              </ul>
-              <div className={styles[`search-box-container`]}>
-                <ul>
-                  <li className={`${styles.items}`}>
-                    <input type="text" placeholder="From" />
-                  </li>
-                  <li className={styles.items}>
-                    <input type="text" placeholder="From" />
-                  </li>
-                  <li className={styles.items}>
-                    <input type="text" placeholder="From" />
-                  </li>
-                  <li className={styles.items}>
-                    <input type="text" placeholder="From" />
-                  </li>
-                  <li className={styles.items}>
-                    <button>Search</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <SearchBox />
           </div>
         </div>
       </div>

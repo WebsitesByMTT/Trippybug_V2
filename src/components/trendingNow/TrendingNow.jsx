@@ -3,7 +3,7 @@ import styles from "./trendingNow.module.scss";
 import { getPostsByCategoryName } from "@/app/lib/data";
 import Link from "next/link";
 import Cards from "./cards/Cards";
-
+import Titles from "../titles/Titles";
 
 const TrendingNow = async () => {
   const trendingBlogs = await getPostsByCategoryName("trending");
@@ -11,15 +11,11 @@ const TrendingNow = async () => {
   return (
     <div className={styles[`trending-now`]}>
       <div className={styles.container}>
-        <div className={styles.titles}>
-          <h2>TRENDING NOW</h2>
-          <h3>Find Your Dream Destination</h3>
-          <p>
-            Finding The Perfect Travel Flight Is Like Uncovering A Hidden
-            Treasure
-          </p>
-        </div>
-
+        <Titles
+          title="TRENDING NOW"
+          subtitle="Find Your Dream Destination"
+          desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
+        />
         <div className={styles.content}>
           <Cards data={data} />
         </div>

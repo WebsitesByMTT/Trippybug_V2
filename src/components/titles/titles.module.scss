@@ -1,0 +1,29 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
+
+.titles {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h2 {
+      font-size: 3.7rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: map-get($colors, secondary);
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }

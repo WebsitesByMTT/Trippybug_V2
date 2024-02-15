@@ -1,10 +1,15 @@
+import Banner from "@/components/banner/Banner";
 import styles from "./hotels.module.scss";
 
 const Hotels = () => {
   return (
-    <div className={styles.hotels}>
-      <div className={styles.container}>Hotels</div>
-    </div>
+    <>
+      <Banner
+        bg="/hotels-bg.png"
+        align="flex-start"
+        title="Find top Hotels at popular destinations"
+      />
+    </>
   );
 };
 

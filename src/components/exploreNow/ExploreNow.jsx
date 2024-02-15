@@ -3,6 +3,7 @@ import styles from "./exploreNow.module.scss";
 import Favourite from "../SVG/Favourite";
 import LocationMarker from "../SVG/LocationMarker";
 import { getPostsByCategoryName } from "@/app/lib/data";
+import Titles from "../titles/Titles";
 
 const ExploreNow = async () => {
   const exploreTheWorld = await getPostsByCategoryName("explore-the-world");
@@ -10,15 +11,11 @@ const ExploreNow = async () => {
   return (
     <div className={styles[`explore-now`]}>
       <div className={styles.container}>
-        <div className={styles.titles}>
-          <h2>Explore Now</h2>
-          <h3>Find Your Dream Destination</h3>
-          <p>
-            Finding The Perfect Travel Flight Is Like Uncovering A Hidden
-            Treasure
-          </p>
-        </div>
-
+        <Titles
+          title="EXPLORE NOW"
+          subtitle="Find Your Dream Destination"
+          desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
+        />
         <div className={styles.content}>
           <div className={styles.left}>
             <div className={styles[`image-container`]}>
