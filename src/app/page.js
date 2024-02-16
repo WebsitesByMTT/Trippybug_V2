@@ -9,12 +9,12 @@ import TrendingNow from "@/components/trendingNow/TrendingNow";
 
 export default function Home() {
   return (
-    <>
+    <div className={styles.home}>
       <Hero />
       <ExploreNow />
       <TrendingNow />
       <TopDestination />
       <Footer />
-    </>
+    </div>
   );
 }

@@ -20,7 +20,6 @@ const Banner = ({ bg, align, title, desc }) => {
           </div>
         </div>
       </div>
-      <SearchBox />
     </>
   );
 };

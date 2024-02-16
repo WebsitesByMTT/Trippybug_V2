@@ -43,7 +43,7 @@ const Cards = ({ data }) => {
     sliderRef?.current?.slickNext();
   };
   return (
-    <Slider {...carouselSettings} ref={sliderRef}>
+    <Slider {...carouselSettings} ref={sliderRef} className={styles.cards}>
       {data.map((post, index) => (
         <div className={styles.card} key={index}>
           <div className={styles[`card-container`]}>

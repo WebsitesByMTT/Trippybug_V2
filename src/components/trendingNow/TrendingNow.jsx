@@ -17,7 +17,7 @@ const TrendingNow = async () => {
           desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
         />
         <div className={styles.content}>
-          <Cards data={data} />
+          <Cards data={data} /> 
         </div>
       </div>
     </div>
