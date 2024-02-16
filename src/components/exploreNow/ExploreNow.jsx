@@ -3,22 +3,20 @@ import styles from "./exploreNow.module.scss";
 import Favourite from "../SVG/Favourite";
 import LocationMarker from "../SVG/LocationMarker";
 import { getPostsByCategoryName } from "@/app/lib/data";
-import Cards from "./cards/Cards";
+import Titles from "../titles/Titles";
+import Cards from "./cards/ExploreCards";
+
 const ExploreNow = async () => {
   const exploreTheWorld = await getPostsByCategoryName("explore-the-world");
   const data = exploreTheWorld.edges;
   return (
     <div className={styles[`explore-now`]}>
       <div className={styles.container}>
-        <div className={styles.titles}>
-          <h2>Explore Now</h2>
-          <h3>Find Your Dream Destination</h3>
-          <p>
-            Finding The Perfect Travel Flight Is Like Uncovering A Hidden
-            Treasure
-          </p>
-        </div>
-
+        <Titles
+          title="EXPLORE NOW"
+          subtitle="Find Your Dream Destination"
+          desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
+        />
         <div className={styles.content}>
           <div className={styles.left}>
             <div className={styles[`image-container`]}>
@@ -58,22 +56,8 @@ const ExploreNow = async () => {
               </p>
             </div>
             .
-
             <div className={styles[`right-content`]}>
-              <div className={styles.cards}>
-                {data.map((post, index) => (
-                  <div className={styles.card} key={post?.node?.postId}>
-                    <div className={styles[`image-container`]}>
-                      <Image
-                        src={post?.node?.featuredImage?.node?.sourceUrl}
-                        fill
-                        className={styles.image}
-                        alt={post?.node?.title}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <Cards data={data} />
 
               <div className={styles.button}>
                 <button>
@@ -98,9 +82,6 @@ const ExploreNow = async () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.content}>
-<Cards />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./cards.module.scss";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Cards = ({ data }) => {
+
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -44,7 +45,7 @@ const Cards = ({ data }) => {
   };
   return (
     <div className={styles.cards}>
-      <Slider {...carouselSettings} ref={sliderRef} >
+      <Slider {...carouselSettings} ref={sliderRef}>
         {data.map((post, index) => (
           <div className={styles.card} key={index}>
             <div className={styles[`card-container`]}>
@@ -67,25 +68,44 @@ const Cards = ({ data }) => {
                   More
                 </Link>
               </div>
-
             </div>
           </div>
-
         ))}
-
       </Slider>
       <button className={styles.prevbtn} onClick={previousSlide}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
-          <path d="M7 1L1 7.5L7 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="15"
+          viewBox="0 0 8 15"
+          fill="none"
+        >
+          <path
+            d="M7 1L1 7.5L7 14"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
       </button>
       <button className={styles.nextbtn} onClick={nextSlide}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="15" viewBox="0 0 8 15" fill="none">
-          <path d="M1 1L7 7.5L1 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="15"
+          viewBox="0 0 8 15"
+          fill="none"
+        >
+          <path
+            d="M1 1L7 7.5L1 14"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
       </button>
-
     </div>
   );
 };

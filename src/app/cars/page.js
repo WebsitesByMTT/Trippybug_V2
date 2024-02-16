@@ -1,10 +1,15 @@
+import Banner from "@/components/banner/Banner";
 import styles from "./cars.module.scss";
 
 const Cars = () => {
   return (
-    <div className={styles.cars}>
-      <div className={styles.container}>Cars</div>
-    </div>
+    <>
+      <Banner
+        bg="/cars-bg.png"
+        align="flex-start"
+        title="Find hundreds of car on rental"
+      />
+    </>
   );
 };
 
