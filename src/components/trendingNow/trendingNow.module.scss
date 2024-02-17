@@ -1,0 +1,27 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
+.trending-now {
+  padding: 8rem 4rem;
+
+  @include media.for-greater-than-medium {
+    padding: 8rem 6rem;
+  }
+
+  @include media.for-greater-than-large {
+    padding: 8rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    height: 100%;
+
+  
+
+    .content {
+      // border: 1px solid red;
+    }
+  }
+}

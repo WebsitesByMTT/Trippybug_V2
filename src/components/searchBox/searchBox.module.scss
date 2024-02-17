@@ -1,0 +1,72 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
+.search-box {
+  backdrop-filter: blur(5px);
+  background: rgba(167, 167, 167, 0.35);
+  padding: 2rem;
+  margin-top: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: map-get($colors, text);
+
+  .tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 0.5rem;
+
+    li {
+      font-size: 1.6rem;
+      flex: 1;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      background: map-get($colors, secondary);
+      border-radius: 0.5rem 0.5rem 0rem 0rem;
+      font-weight: bold;
+    }
+
+    .active {
+      background: map-get($colors, primary);
+    }
+  }
+
+  &-container {
+    width: 100%;
+    padding: 2rem;
+    background-color: map-get($colors, primary);
+    border-radius: 0.5rem;
+
+    ul {
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+
+      .items {
+        flex: 1 1 auto;
+
+        input {
+          width: 100%;
+          padding: 1rem;
+          font-size: 1.6rem;
+        }
+
+        button {
+          width: 100%;
+          padding: 1rem;
+          font-size: 1.6rem;
+          background-color: map-get($colors, secondary);
+          color: white;
+        }
+      }
+    }
+  }
+}
