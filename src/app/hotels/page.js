@@ -3,47 +3,12 @@ import styles from "./hotels.module.scss";
 import Titles from "@/components/titles/Titles";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
+import { getPostsByCategoryName } from "../lib/data";
 
-const data = [
-  {
-    id: 1,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-  {
-    id: 2,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-  {
-    id: 3,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-  {
-    id: 1,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-  {
-    id: 2,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-  {
-    id: 3,
-    title: "Most Beautiful Capital Cities In Europe For Your Winter Vaccation ",
-    desc: "Explore the most beautiful Europe for",
-    img: "/images/hotels.png",
-  },
-];
+const Hotels = async () => {
+  const trendingBlogs = await getPostsByCategoryName("trending");
+  const data = trendingBlogs.edges;
 
-const Hotels = () => {
   return (
     <>
       <Banner
@@ -67,7 +32,7 @@ const Hotels = () => {
                   <div className={styles[`card-container`]}>
                     <div className={styles[`image-container`]}>
                       <Image
-                        src={item.img}
+                        src={item?.node?.featuredImage?.node?.sourceUrl}
                         fill
                         className={styles.image}
                         alt={item.img}
@@ -75,8 +40,14 @@ const Hotels = () => {
                     </div>
 
                     <div className={styles.detail}>
-                      <h4>{item.title}</h4>
-                      <p>{item.desc}</p>
+                      <h4>{item?.node?.title}</h4>
+
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: item?.node?.excerpt,
+                        }}
+                        className={styles.desc}
+                      />
                     </div>
                   </div>
                 </div>
