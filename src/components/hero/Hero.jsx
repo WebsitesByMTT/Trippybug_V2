@@ -4,6 +4,7 @@ import Navbar from "../navbar/Navbar";
 import TimelineMap from "../SVG/TimelineMap";
 import LocationMarker from "../SVG/LocationMarker";
 import SearchBox from "../searchBox/searchBox";
+import KashmirTimeline from "../SVG/KashmirTimeline";
 
 const Hero = () => {
   return (
@@ -38,24 +39,8 @@ const Hero = () => {
               </div>
             </div>
             <div className={styles.bottom}>
-              <div className={styles[`timeline`]}>
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Yousmarg</span>
-                </div>
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Strawberry Valley</span>
-                </div>
-
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Pari Mahal</span>
-                </div>
-
-                <div className={styles.map}>
-                  <TimelineMap className={styles.map} />
-                </div>
+              <div className={styles.map}>
+                <KashmirTimeline className={styles.map} />
               </div>
             </div>
 
