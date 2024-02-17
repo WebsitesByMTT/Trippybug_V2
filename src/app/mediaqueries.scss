@@ -1,0 +1,21 @@
+$smaller: 480px;
+$medium: 768px;
+$large: 1024px;
+
+@mixin for-greater-than-smaller {
+  @media (min-width: $smaller) {
+    @content;
+  }
+}
+
+@mixin for-greater-than-medium {
+  @media (min-width: $medium) {
+    @content;
+  }
+}
+
+@mixin for-greater-than-large {
+  @media (min-width: $large) {
+    @content;
+  }
+}

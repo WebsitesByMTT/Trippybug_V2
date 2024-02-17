@@ -1,0 +1,37 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
+.titles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h2 {
+    font-size: map-get($sizes, h2);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: map-get($colors, secondary);
+    text-align: center;
+
+    @include media.for-greater-than-medium {
+      font-size: 3.7rem;
+    }
+  }
+
+  h3 {
+    font-size: map-get($sizes, h3);
+    font-weight: bold;
+    text-align: center;
+
+    @include media.for-greater-than-medium {
+      font-size: 5rem;
+    }
+  }
+
+  p {
+    font-size: map-get($sizes, p);
+    text-align: center;
+    color: #757474;
+  }
+}
