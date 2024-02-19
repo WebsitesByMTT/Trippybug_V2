@@ -4,6 +4,7 @@ import Favourite from "../SVG/Favourite";
 import LocationMarker from "../SVG/LocationMarker";
 import { getPostsByCategoryName } from "@/app/lib/data";
 import Titles from "../titles/Titles";
+import Cards from "./cards/ExploreCards";
 
 const ExploreNow = async () => {
   const exploreTheWorld = await getPostsByCategoryName("explore-the-world");
@@ -54,23 +55,10 @@ const ExploreNow = async () => {
                 <span>more</span>
               </p>
             </div>
-
+            .
             <div className={styles[`right-content`]}>
-              <div className={styles.cards}>
-                {data.map((post, index) => (
-                  <div className={styles.card} key={post?.node?.postId}>
-                    <div className={styles[`image-container`]}>
-                      <Image
-                        src={post?.node?.featuredImage?.node?.sourceUrl}
-                        width={1000}
-                        height={1000}
-                        className={styles.image}
-                        alt={post?.node?.title}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+
+              <Cards data={data} />
 
               <div className={styles.button}>
                 <button>

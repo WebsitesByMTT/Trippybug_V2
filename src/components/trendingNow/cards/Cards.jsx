@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./cards.module.scss";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Cards = ({ data }) => {
+
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -43,34 +44,69 @@ const Cards = ({ data }) => {
     sliderRef?.current?.slickNext();
   };
   return (
-    <Slider {...carouselSettings} ref={sliderRef} className={styles.cards}>
-      {data.map((post, index) => (
-        <div className={styles.card} key={index}>
-          <div className={styles[`card-container`]}>
-            <div className={styles[`image-container`]}>
-              <Image
-                src={post?.node?.featuredImage?.node?.sourceUrl}
-                alt={post?.node?.title}
-                width={1000}
-                height={1000}
-                className={styles.image}
-              />
-            </div>
+    <div className={styles.cards}>
+      <Slider {...carouselSettings} ref={sliderRef}>
+        {data.map((post, index) => (
+          <div className={styles.card} key={index}>
+            <div className={styles[`card-container`]}>
+              <div className={styles[`image-container`]}>
+                <Image
+                  src={post?.node?.featuredImage?.node?.sourceUrl}
+                  alt={post?.node?.title}
+                  fill
+                  className={styles.image}
+                />
+              </div>
 
-            <div className={styles.detail}>
-              <h4>{post?.node?.title}</h4>
-              <div
-                dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }}
-                className={styles.desc}
-              />
-              <Link href={post?.node?.slug} className={styles.more}>
-                More
-              </Link>
+              <div className={styles.detail}>
+                <h4>{post?.node?.title}</h4>
+                <div
+                  dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }}
+                  className={styles.desc}
+                />
+                <Link href={post?.node?.slug} className={styles.more}>
+                  More
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+      <button className={styles.prevbtn} onClick={previousSlide}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="15"
+          viewBox="0 0 8 15"
+          fill="none"
+        >
+          <path
+            d="M7 1L1 7.5L7 14"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button className={styles.nextbtn} onClick={nextSlide}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="15"
+          viewBox="0 0 8 15"
+          fill="none"
+        >
+          <path
+            d="M1 1L7 7.5L1 14"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
   );
 };
 

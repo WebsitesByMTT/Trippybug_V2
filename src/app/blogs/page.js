@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./blogs.module.scss";
 import Categories from "@/components/categories/Categories";
+import Image from "next/image";
 
 const categories = [
   {
@@ -77,7 +78,15 @@ const Blogs = () => {
           </section>
           <section className={styles[`image-gallery`]}>
             {images.map((image, index) => (
-              <img key={index} src={image} alt={`Image ${index + 1}`} />
+              <div className={styles[`image-container`]}>
+                <Image
+                  key={index}
+                  fill
+                  src={image}
+                  alt={`Image ${index + 1}`}
+                  className={styles.image}
+                />
+              </div>
             ))}
           </section>
         </div>

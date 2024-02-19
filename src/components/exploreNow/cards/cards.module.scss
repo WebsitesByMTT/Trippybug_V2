@@ -35,7 +35,6 @@
     .image-container {
       position: relative;
       height: 40rem;
-          max-height: 40rem;
 
       border-radius: 1.6rem;
       overflow: hidden;
@@ -62,11 +61,11 @@
         overflow: hidden;
       }
 
-          .desc {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-            overflow: hidden;
+      .desc {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
 
         p {
           font-size: 1.6rem;
