@@ -8,14 +8,6 @@
   flex-direction: column;
   gap: 8rem;
 
-  background: linear-gradient(
-    270deg,
-    #fdf2d6 0%,
-    #fff2d7 12.55%,
-    #fae6cd 33.53%,
-    #f1e8de 55.89%,
-    #d8dcdd 100%
-  );
 
   @include media.for-greater-than-medium {
     padding: 8rem 6rem;

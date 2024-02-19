@@ -44,11 +44,15 @@
 
     ul {
       color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       width: 100%;
-      flex-wrap: wrap;
+
+      @include media.for-greater-than-medium {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
 
       .items {
         flex: 1 1 auto;
@@ -57,6 +61,7 @@
           width: 100%;
           padding: 1rem;
           font-size: 1.6rem;
+          border: 1px solid gray;
         }
 
         button {
@@ -65,6 +70,7 @@
           font-size: 1.6rem;
           background-color: map-get($colors, secondary);
           color: white;
+          border: none;
         }
       }
     }

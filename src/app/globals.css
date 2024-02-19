@@ -21,7 +21,14 @@ html {
 }
 
 body {
-  background: #fdfdfd;
+  background: linear-gradient(
+    270deg,
+    #fdf2d6 0%,
+    #fff2d7 12.55%,
+    #fae6cd 33.53%,
+    #f1e8de 55.89%,
+    #d8dcdd 100%
+  );
 }
 
 /* Font size for screens that are 768px wide or less */
@@ -51,7 +58,6 @@ body {
 @media screen and (max-width: 330px) {
   html {
     font-size: 40%;
-
   }
 }
 

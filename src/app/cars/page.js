@@ -1,6 +1,7 @@
 import Banner from "@/components/banner/Banner";
 import styles from "./cars.module.scss";
 import Image from "next/image";
+import Footer from "@/components/footer/Footer";
 
 const data = [
   {
@@ -80,6 +81,8 @@ const Cars = () => {
               ))}
             </ul>
           </div>
+
+          <Footer />
         </div>
       </div>
     </>

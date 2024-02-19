@@ -4,6 +4,7 @@
 .hero {
   position: relative;
   z-index: 1;
+  
 
   // Add overlay
   &::before {
@@ -35,12 +36,13 @@
   }
 
   .content {
-    padding: 2rem 4rem;
+    padding: 2.36vw 4.72vw;
     display: flex;
     align-items: center;
     justify-content: center;
     color: map-get($colors, text);
     z-index: 1;
+
 
     .container {
       display: flex;
@@ -139,10 +141,10 @@
         }
 
         .map {
-          width: 100vw;
+          width: 100%;
 
           @include media.for-greater-than-smaller{
-            width: 80%;
+            width: 70vw;
           }
           
           @include media.for-greater-than-medium{
