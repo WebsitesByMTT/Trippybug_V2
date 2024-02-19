@@ -8,7 +8,7 @@ const Banner = ({ bg, align, title, desc }) => {
     <>
       <div className={styles.banner}>
         <div className={styles[`bg-container`]}>
-          <Image src={bg} fill className={styles.bg} alt={bg} />
+          <Image src={bg} width={1000} height={1000} className={styles.bg} alt={bg} />
         </div>
         <Navbar />
         <div className={styles.content}>
@@ -20,7 +20,6 @@ const Banner = ({ bg, align, title, desc }) => {
           </div>
         </div>
       </div>
-      <SearchBox />
     </>
   );
 };

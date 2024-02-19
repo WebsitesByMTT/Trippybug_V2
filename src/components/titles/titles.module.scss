@@ -1,29 +1,43 @@
 @use "/src/app/variables.scss" as *;
 @use "/src/app/mediaqueries.scss" as media;
 
-
 .titles {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-    h2 {
-      font-size: 3.7rem;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: map-get($colors, secondary);
-      text-align: center;
-    }
+  h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: map-get($colors, secondary);
+    text-align: center;
+    font-size: 2.5vh;
 
-    h3 {
-      font-size: 5rem;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    p {
-      font-size: 2rem;
-      text-align: center;
+    @include media.for-greater-than-medium {
+      font-size: 2.5vw;
     }
   }
+
+  h3 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5vh;
+
+    @include media.for-greater-than-medium{
+      font-size: 5vw;
+    }
+  }
+
+  p {
+    text-align: center;
+    color: #757474;
+
+    font-size: 1.6vh;
+
+    @include media.for-greater-than-medium{
+      font-size: 1.6vw;
+    }
+
+  }
+}

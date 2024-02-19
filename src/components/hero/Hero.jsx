@@ -4,13 +4,14 @@ import Navbar from "../navbar/Navbar";
 import TimelineMap from "../SVG/TimelineMap";
 import LocationMarker from "../SVG/LocationMarker";
 import SearchBox from "../searchBox/searchBox";
+import KashmirTimeline from "../SVG/KashmirTimeline";
 
 const Hero = () => {
   return (
     <>
       <div className={styles.hero}>
         <div className={styles[`bg-container`]}>
-          <Image src={"/bg.png"} fill className={styles.bg} alt="hero" />
+          <Image src={"/bg.png"} width={1000} height={1000} className={styles.bg} alt="hero" />
         </div>
         <Navbar />
         <div className={styles.content}>
@@ -38,24 +39,8 @@ const Hero = () => {
               </div>
             </div>
             <div className={styles.bottom}>
-              <div className={styles[`timeline`]}>
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Yousmarg</span>
-                </div>
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Strawberry Valley</span>
-                </div>
-
-                <div className={styles.points}>
-                  <LocationMarker />
-                  <span>Pari Mahal</span>
-                </div>
-
-                <div className={styles.map}>
-                  <TimelineMap className={styles.map} />
-                </div>
+              <div className={styles.map}>
+                <KashmirTimeline className={styles.map} />
               </div>
             </div>
 
