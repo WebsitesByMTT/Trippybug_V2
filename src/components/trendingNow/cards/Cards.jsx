@@ -51,7 +51,8 @@ const Cards = ({ data }) => {
               <Image
                 src={post?.node?.featuredImage?.node?.sourceUrl}
                 alt={post?.node?.title}
-                fill
+                width={1000}
+                height={1000}
                 className={styles.image}
               />
             </div>

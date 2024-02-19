@@ -21,9 +21,9 @@ const ExploreNow = async () => {
             <div className={styles[`image-container`]}>
               <Image
                 src={"/exploreNow/1.png"}
-                fill
                 className={styles.image}
                 alt="explore-now-image"
+                width={1000} height={1000}
               />
             </div>
             <div className={styles.detail}>
@@ -62,7 +62,8 @@ const ExploreNow = async () => {
                     <div className={styles[`image-container`]}>
                       <Image
                         src={post?.node?.featuredImage?.node?.sourceUrl}
-                        fill
+                        width={1000}
+                        height={1000}
                         className={styles.image}
                         alt={post?.node?.title}
                       />

@@ -8,30 +8,36 @@
   flex-direction: column;
 
   h2 {
-    font-size: map-get($sizes, h2);
     text-transform: uppercase;
     font-weight: bold;
     color: map-get($colors, secondary);
     text-align: center;
+    font-size: 2.5vh;
 
     @include media.for-greater-than-medium {
-      font-size: 3.7rem;
+      font-size: 2.5vw;
     }
   }
 
   h3 {
-    font-size: map-get($sizes, h3);
     font-weight: bold;
     text-align: center;
+    font-size: 2.5vh;
 
-    @include media.for-greater-than-medium {
-      font-size: 5rem;
+    @include media.for-greater-than-medium{
+      font-size: 5vw;
     }
   }
 
   p {
-    font-size: map-get($sizes, p);
     text-align: center;
     color: #757474;
+
+    font-size: 1.6vh;
+
+    @include media.for-greater-than-medium{
+      font-size: 1.6vw;
+    }
+
   }
 }

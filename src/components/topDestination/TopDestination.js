@@ -3,6 +3,7 @@ import styles from "./topDestination.module.scss";
 import Image from "next/image";
 import Arrow from "../SVG/Arrow";
 import Favourite from "../SVG/Favourite";
+import Titles from "../titles/Titles";
 
 const cards = [
   {
@@ -32,11 +33,12 @@ const TopDestination = () => {
   return (
     <div className={styles.topDestination}>
       <div className={styles.container}>
-        <div className={styles.titles}>
-          <h2>Top Destination</h2>
-          <h3>Not Sure Where To Start ?</h3>
-          <p>See where others are travelling and follow their trails</p>
-        </div>
+       
+        <Titles
+          title="Top Destination"
+          subtitle="Not Sure Where To Start ?"
+          desc="See where others are travelling and follow their trails"
+        />
 
         <div className={styles.content}>
           <div className={styles.cards}>

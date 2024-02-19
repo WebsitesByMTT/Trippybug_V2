@@ -1,7 +1,9 @@
 @use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
 
 .navbar {
-  padding: 2rem 4rem;
+  padding: 2.36vw 4.72vw;
+  z-index: 999999;
 
   .container {
     display: flex;
@@ -25,11 +27,47 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9rem;
+      // gap: 9rem;
+      z-index: 99999;
 
       li {
         a {
-          font-size: 1.6rem;
+          font-size: 2vh;
+        }
+      }
+
+      @include media.for-greater-than-smaller {
+        gap: 9vw;
+      }
+
+      @include media.only-for-smaller {
+        position: fixed;
+        bottom: 1vh;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5vh;
+        width: 80%;
+        height: 6vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        background-color: map-get($colors, secondary);
+        padding: 1vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index: 9999;
+        li {
+          flex: 1;
+          height: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        & > :nth-child(2) {
+          border-left: 1px solid white;
+          border-right: 1px solid white;
         }
       }
     }
