@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Navbar from "../navbar/Navbar";
-import styles from "./FourZeroFour.module.scss";
+import styles from "./fourZeroFour.module.scss";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
