@@ -1,8 +1,6 @@
 @use "/src/app/variables.scss" as *;
 @use "/src/app/mediaqueries.scss" as media;
 
-
-
 .card {
   flex: 0 0 100%;
   scroll-snap-align: start;
@@ -35,6 +33,7 @@
     .image-container {
       position: relative;
       height: 40rem;
+      max-height: 40rem;
 
       border-radius: 1.6rem;
       overflow: hidden;
@@ -94,7 +93,6 @@
     border-radius: 50%;
     cursor: pointer;
     border: none;
-
   }
 
   .nextbtn {
@@ -108,6 +106,5 @@
     border: none;
 
     cursor: pointer;
-
   }
 }

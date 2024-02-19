@@ -78,14 +78,14 @@ const Blogs = () => {
           </section>
           <section className={styles[`image-gallery`]}>
             {images.map((image, index) => (
-              <div className={styles[`image-container`]}>
-                <Image
+              <div className={styles[`image-container`]} key={index}>
+                {/* <Image
                   key={index}
                   fill
                   src={image}
                   alt={`Image ${index + 1}`}
                   className={styles.image}
-                />
+                /> */}
               </div>
             ))}
           </section>

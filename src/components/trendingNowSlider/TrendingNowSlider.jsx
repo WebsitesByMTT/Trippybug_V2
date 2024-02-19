@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import styles from "./cards.module.scss";
+import styles from "./trendingNowSlider.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Cards = ({ data }) => {
-
+const TrendingNowSlider = ({ data }) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -83,9 +82,9 @@ const Cards = ({ data }) => {
           <path
             d="M7 1L1 7.5L7 14"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </button>
@@ -100,9 +99,9 @@ const Cards = ({ data }) => {
           <path
             d="M1 1L7 7.5L1 14"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </button>
@@ -110,4 +109,4 @@ const Cards = ({ data }) => {
   );
 };
 
-export default Cards;
+export default TrendingNowSlider;
