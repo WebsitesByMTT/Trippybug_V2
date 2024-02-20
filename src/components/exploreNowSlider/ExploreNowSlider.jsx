@@ -1,15 +1,13 @@
 "use client";
-
 import React, { useRef } from "react";
-import styles from "./cards.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import styles from './exploreNowSlider.module.scss'
 
-const Cards = ({ data }) => {
-  console.log(data);
+const ExploreNowSlider = ({data}) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -36,9 +34,8 @@ const Cards = ({ data }) => {
     ],
   };
 
-
   return (
-    <div className={styles.cards}>
+    <section className={styles.cards}>
       <Slider {...carouselSettings} ref={sliderRef}>
         {data.map((post, index) => (
           <div className={styles.card} key={index}>
@@ -50,15 +47,13 @@ const Cards = ({ data }) => {
                   className={styles.image}
                   alt={post?.node?.title}
                 />
-
-                
               </div>
             </div>
           </div>
         ))}
       </Slider>
-    </div>
+    </section>
   );
 };
 
-export default Cards;
+export default ExploreNowSlider;
