@@ -26,7 +26,7 @@
 
     .top {
       display: flex;
-      flex-wrap: wrap-reverse;
+      gap: 2rem;
 
       .content {
         flex: 1;
@@ -39,6 +39,7 @@
           display: flex;
           flex-direction: column;
           gap: 2rem;
+
           .title {
             h1 {
               color: #171719;
@@ -140,18 +141,16 @@
               p {
                 color: #454547;
                 text-align: justify;
-                font-family: "Times New Roman";
                 font-size: 2rem;
                 font-style: normal;
                 font-weight: 400;
                 line-height: 3.5rem; /* 140% */
-                letter-spacing: 0.125rem;
+                // letter-spacing: 0.125rem;
                 text-transform: capitalize;
               }
 
               h3 {
                 color: #0f5a83;
-                font-family: "Times New Roman";
                 font-size: 3rem;
                 font-style: normal;
                 font-weight: 700;
@@ -237,6 +236,11 @@
       flex-direction: column;
       gap: 4rem;
       .title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
         h2 {
           color: #0f5a83;
           font-size: 6rem;
@@ -248,7 +252,7 @@
         }
 
         svg {
-          width: 50%;
+          // width: 50%;
         }
       }
 
@@ -268,7 +272,6 @@
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          cursor: pointer;
 
           &:hover {
             .image-container {
@@ -303,6 +306,11 @@
               line-height: 3.5rem; /* 140% */
               letter-spacing: 0.125rem;
               text-transform: capitalize;
+
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
             }
 
             p {
@@ -313,6 +321,41 @@
               line-height: 2.9rem; /* 161.111% */
               letter-spacing: 0.09rem;
               text-transform: capitalize;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+            }
+          }
+
+          .action {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .button {
+              border: none;
+              background: #ff991a;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 1rem;
+              cursor: pointer;
+              padding: 1.5rem 2rem;
+              border-radius: 3rem;
+
+              span {
+                color: #fff;
+                font-size: 1.5rem;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                text-transform: uppercase;
+              }
+
+              svg {
+                width: 2.5rem;
+                height: 2.5rem;
+              }
             }
           }
         }
