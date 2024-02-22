@@ -14,13 +14,13 @@ const SearchBox = () => {
             <input type="text" placeholder="From" />
           </li>
           <li className={styles.items}>
-            <input type="text" placeholder="From" />
+            <input type="text" placeholder="Destination" />
           </li>
           <li className={styles.items}>
-            <input type="text" placeholder="From" />
+            <input type="text" placeholder="Adults" />
           </li>
           <li className={styles.items}>
-            <input type="text" placeholder="From" />
+            <input type="text" placeholder="Category" />
           </li>
           <li className={styles.items}>
             <button>Search</button>

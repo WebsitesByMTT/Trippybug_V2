@@ -2,6 +2,12 @@ $smaller: 480px;
 $medium: 768px;
 $large: 1024px;
 
+@mixin only-for-smaller {
+  @media (max-width: $smaller) {
+    @content;
+  }
+}
+
 @mixin for-greater-than-smaller {
   @media (min-width: $smaller) {
     @content;
