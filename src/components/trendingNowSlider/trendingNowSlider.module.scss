@@ -7,9 +7,7 @@
   flex-basis: calc(100% - 1rem);
 
   overflow: hidden;
-  padding: 1rem;
-  border-radius: 2.3rem;
-  border: 1px solid rgba(0, 0, 0, 0.24);
+  padding: 0rem 1rem;
 
   @include media.for-greater-than-smaller {
     flex-basis: calc(50% - 1rem);
@@ -24,6 +22,12 @@
   }
 
   &-container {
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 2.3rem;
+  }
+
+  .inner-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,14 +60,14 @@
         font-weight: 500;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         overflow: hidden;
       }
 
       .desc {
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
         overflow: hidden;
 
         p {
@@ -75,6 +79,14 @@
       .more {
         color: map-get($colors, secondary);
         font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        svg{
+          width: 3.9rem;
+          height: 3.9rem;
+        }
       }
     }
   }

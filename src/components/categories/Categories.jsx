@@ -49,16 +49,18 @@ const Categories = ({ data }) => {
   return (
     <Slider {...carouselSettings} ref={sliderRef} className={styles.list}>
       {data.map((item, index) => (
-        <li key={index}>
+        <li key={item.node?.id}>
           <div className={styles[`image-container`]}>
             <Image
-              src={item.img}
+              src={
+                item.node?.posts?.edges[0]?.node?.featuredImage?.node?.sourceUrl
+              }
               fill
-              alt="category"
+              alt={item.node?.name}
               className={styles.image}
             />
           </div>
-          <h6>{item.title}</h6>
+          <h6>{item.node?.name}</h6>
         </li>
       ))}
     </Slider>

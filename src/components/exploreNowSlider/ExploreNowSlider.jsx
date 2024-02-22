@@ -5,9 +5,9 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from './exploreNowSlider.module.scss'
+import styles from "./exploreNowSlider.module.scss";
 
-const ExploreNowSlider = ({data}) => {
+const ExploreNowSlider = ({ data }) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -38,18 +38,20 @@ const ExploreNowSlider = ({data}) => {
     <section className={styles.cards}>
       <Slider {...carouselSettings} ref={sliderRef}>
         {data.map((post, index) => (
-          <div className={styles.card} key={index}>
+          <Link href={post.node?.slug} className={styles.card} key={index}>
             <div className={styles[`card-container`]}>
-              <div className={styles[`image-container`]}>
-                <Image
-                  src={post?.node?.featuredImage?.node?.sourceUrl}
-                  fill
-                  className={styles.image}
-                  alt={post?.node?.title}
-                />
+              <div className={styles[`inner-container`]}>
+                <div className={styles[`image-container`]}>
+                  <Image
+                    src={post?.node?.featuredImage?.node?.sourceUrl}
+                    fill
+                    className={styles.image}
+                    alt={post?.node?.title}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
     </section>

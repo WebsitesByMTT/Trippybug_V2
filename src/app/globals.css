@@ -31,6 +31,21 @@ body {
   );
 }
 
+.slick-arrow.slick-next::before,
+.slick-arrow.slick-prev::before {
+  color: #0f5a83 !important;
+}
+
+.wp-block-image {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 /* Font size for screens that are 768px wide or less */
 @media screen and (max-width: 768px) {
   html {

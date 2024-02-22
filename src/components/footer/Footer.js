@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./footer.module.scss";
 import Image from "next/image";
 
@@ -23,10 +24,16 @@ const Footer = () => {
 
           <div className={styles.right}>
             <ul>
-              <li> Production</li>
-              <li>Flight</li>
-              <li>Hotels</li>
-              <li>Cars</li>
+              <li> Product</li>
+              <li>
+                <Link href={"/flights"}>Flight</Link>
+              </li>
+              <li>
+                <Link href={"/hotels"}>Hotels</Link>
+              </li>
+              <li>
+                <Link href={"Cars"}>Cars</Link>
+              </li>
             </ul>
             <ul>
               <li>Navigation</li>
@@ -34,7 +41,9 @@ const Footer = () => {
               <li>About</li>
               <li>Explore</li>
               <li>Trending</li>
-              <li>Blogs</li>
+              <li>
+                <Link href={"/blogs"}>Blogs</Link>
+              </li>
               <li>Contact</li>
             </ul>
             <ul>

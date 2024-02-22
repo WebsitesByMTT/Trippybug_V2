@@ -24,10 +24,10 @@
         flex-direction: column;
         align-items: center;
 
-        @include media.for-greater-than-medium{
+        @include media.for-greater-than-medium {
           align-items: flex-start;
         }
-        
+
         p {
           font-size: 1.2vh;
           text-align: center;
@@ -61,6 +61,7 @@
             font-size: 2vh;
             color: map-get($colors, secondary);
             margin-bottom: 2vh;
+            text-transform: uppercase;
 
             @include media.for-greater-than-medium {
               font-size: 2vw;

@@ -4,11 +4,10 @@ import Titles from "@/components/titles/Titles";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
 import { getPostsByCategoryName } from "../lib/data";
+import TrendingNowSlider from "@/components/trendingNowSlider/TrendingNowSlider";
 
 const Hotels = async () => {
-  const trendingBlogs = await getPostsByCategoryName("trending");
-  const data = trendingBlogs.edges;
-
+  const { edges: trendingBlogs } = await getPostsByCategoryName("trending");
   return (
     <>
       <Banner
@@ -26,38 +25,11 @@ const Hotels = async () => {
           />
 
           <div className={styles.content}>
-            <div className={styles.grid}>
-              {data.map((item) => (
-                <div className={styles.card} key={item.id}>
-                  <div className={styles[`card-container`]}>
-                    <div className={styles[`image-container`]}>
-                      <Image
-                        src={item?.node?.featuredImage?.node?.sourceUrl}
-                        fill
-                        className={styles.image}
-                        alt={item.img}
-                      />
-                    </div>
-
-                    <div className={styles.detail}>
-                      <h4>{item?.node?.title}</h4>
-
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: item?.node?.excerpt,
-                        }}
-                        className={styles.desc}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <TrendingNowSlider data={trendingBlogs} />
           </div>
         </div>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

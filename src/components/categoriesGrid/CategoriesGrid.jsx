@@ -1,8 +1,7 @@
 import Image from "next/image";
 import styles from "./categoriesGrid.module.scss";
 
-const CategoriesGrid = ({ nestedArray }) => {
-  console.log(nestedArray);
+const CategoriesGrid = () => {
   return (
     <div className={styles.grid}>
       <div className={styles[`row`]}>

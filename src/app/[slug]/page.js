@@ -5,59 +5,40 @@ import styles from "./singleBlog.module.scss";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
 import Categories from "@/components/categories/Categories";
-import { getPostBySlug } from "../lib/data";
-// import { usePathname } from "next/navigation";
-const categories = [
-  {
-    id: 1,
-    title: "All",
-    img: "/exploreNow/1.png",
-  },
-  {
-    id: 2,
-    title: "Airlines",
-    img: "/exploreNow/2.png",
-  },
-  {
-    id: 3,
-    title: "Cars",
-    img: "/exploreNow/4.png",
-  },
-  {
-    id: 4,
-    title: "Explore",
-    img: "/exploreNow/2.png",
-  },
-  {
-    id: 5,
-    title: "Inspiration",
-    img: "/exploreNow/1.png",
-  },
-  {
-    id: 6,
-    title: "Recommended Hotels",
-    img: "/exploreNow/2.png",
-  },
-  {
-    id: 7,
-    title: "Trending",
-    img: "/exploreNow/4.png",
-  },
-  {
-    id: 8,
-    title: "Uncategorized",
-    img: "/exploreNow/2.png",
-  },
-];
+import { getCategories, getPostBySlug, getRecentPosts } from "../lib/data";
+import Link from "next/link";
 
-const SingleBlog = async () => {
-  // const pathname = usePathname();
-  // console.log("path name ; ", pathname);
+function calculateTimeAgo(timestamp) {
+  const currentDate = new Date();
+  const timestampDate = new Date(timestamp);
+  const timeDifference = currentDate - timestampDate;
+  const millisecondsInMinute = 1000 * 60;
+  const millisecondsInHour = millisecondsInMinute * 60;
+  const millisecondsInDay = millisecondsInHour * 24;
 
-  const data = getPostBySlug(
-    "arta-mallorca-guia-consejos-fotos-que-ver-y-hacer"
+  if (timeDifference < millisecondsInMinute) {
+    return "Just now";
+  } else if (timeDifference < millisecondsInHour) {
+    const minutes = Math.floor(timeDifference / millisecondsInMinute);
+    return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
+  } else if (timeDifference < millisecondsInDay) {
+    const hours = Math.floor(timeDifference / millisecondsInHour);
+    return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  } else {
+    const days = Math.floor(timeDifference / millisecondsInDay);
+    return `${days} ${days === 1 ? "day" : "days"} ago`;
+  }
+}
+
+const SingleBlog = async ({ params, preview = false, previewData }) => {
+  const { post: postData } = await getPostBySlug(
+    params.slug,
+    preview,
+    previewData
   );
-  console.log("DATA : ", data);
+  const { edges: categories } = await getCategories(preview);
+  const { edges: recentPosts } = await getRecentPosts(3);
+
   return (
     <>
       <Navbar />
@@ -70,20 +51,20 @@ const SingleBlog = async () => {
             <div className={styles.content}>
               <header>
                 <div className={styles.title}>
-                  <h1>Figma ipsum component variant main layer. Bullet.</h1>
+                  <h1>{postData.title}</h1>
                 </div>
                 <div className={styles.user}>
                   <div className={styles[`image-container`]}>
                     <Image
-                      src={"/exploreNow/1.png"}
-                      alt="user"
+                      src={postData.author?.node?.avatar?.url}
+                      alt={postData.author?.node?.name}
                       fill
                       className={styles.image}
                     />
                   </div>
                   <div className={styles.detail}>
-                    <h4>TrippyBug</h4>
-                    <p>About 18 hours ago</p>
+                    <h4>{postData.author?.node?.name}</h4>
+                    <p>{calculateTimeAgo(postData.date)}</p>
                   </div>
                 </div>
 
@@ -143,158 +124,36 @@ const SingleBlog = async () => {
               <main>
                 <div className={styles[`blog-banner`]}>
                   <Image
-                    src={"/exploreNow/1.png"}
+                    src={postData.featuredImage?.node?.sourceUrl}
                     fill
-                    alt="banner"
+                    alt={postData.title}
                     className={styles.image}
                   />
                 </div>
                 <div className={styles[`blog-content`]}>
-                  <div className={styles.para}>
-                    <p>
-                      Frontier Airlines operates flights from Orlando
-                      International Airport’s Terminal A. This terminal manages
-                      all arrival and departure operations. MCO frontier
-                      terminal A has two Airsides that can be utilized to run
-                      these successfully. Every Airport contains many gates that
-                      are used to handle flight operations. Most of its flying
-                      activity occurs on Airside 1, which includes Gates 1–29.
-                      Aside from these gates, TA provides many facilities on the
-                      ground before and after the journey. These include
-                      parking, lost and found, restaurants, and hotel facilities
-                    </p>
-                  </div>
-
-                  <div className={styles.para}>
-                    <h3>
-                      What Are The Frontier Terminals For MCO Airport Departures
-                      And Arrivals?
-                    </h3>
-
-                    <p>
-                      Terminal A of Orlando International Airport efficiently
-                      manages international and domestic flight arrivals. When
-                      arriving at this site, passengers can use Levels 1 (Gate
-                      8A) and 2 to access the luggage claim areas. They can go
-                      to TA Level 1 to acquire ground transportation services. 
-                      Frontier Airlines approaches Terminal A at Orlando
-                      International Airport for international flight departures.
-                      Domestic flights originate at the same terminal. Before
-                      aircraft departure, security checks are done at Gates
-                      1–59, Level 3. In addition, flight check-in counters are
-                      located on the same level on MCO Frontier terminal.   
-                    </p>
-                  </div>
-
-                  <div className={styles.para}>
-                    <h3>
-                      What Are The Different Levels Of Frontier Airlines’
-                      Orlando Terminal A?
-                    </h3>
-
-                    <p>
-                      Frontier Orlando Airport Terminal A houses four levels:
-                      R-1, 1, 2, and 3. There are parking spaces on Level R-1.
-                      Level one provides access to ground transportation
-                      facilities. Baggage claim services are available at both
-                      Levels 1 and 2. Additionally, Level 3 offers security
-                      checks, check-in areas, and gates.   
-                    </p>
-                  </div>
-
-                  <div className={styles.para}>
-                    <h3>
-                      What Restaurants Do Frontier Airlines MCO Terminal A
-                      offer?
-                    </h3>
-
-                    <p>
-                      Many restaurants are available at MCO Airport Terminal A
-                      for every Frontier Airlines passenger. Different
-                      restaurants have different opening and closing times. For
-                      example, Sbarro, famous for its delicious pizzas, opens at
-                      05:00 a.m. and closes around 09:00 p.m. Meanwhile, Panda
-                      Express, famous for its exquisite Chinese Cuisine, opens
-                      at 09:00 a.m. and closes at 09:00 p.m. 
-                    </p>
-                  </div>
-
-                  <div className={styles.para}>
-                    <h3>
-                      What Services Are Offered At Frontier Terminal Orlando
-                      Airport?
-                    </h3>
-
-                    <p>
-                      MCO Frontier Terminal Airlines passengers at Orlando
-                      International Airport Terminal A can enjoy various
-                      services. This includes the Hyatt Regency Orlando
-                      International Airport hotel, which contains 20 rooms where
-                      passengers can relax and freshen up. Some of the amenities
-                      offered by Frontier Terminal Airport A are as follows: 
-                    </p>
-
-                    <ul>
-                      <li>
-                        There are information booths close to each security
-                        checkpoint. 
-                      </li>
-                      <li>
-                        The booths are only open from 6:00 a.m. to 8:00 p.m. 
-                      </li>
-
-                      <li>
-                        Text phones and TTYs are available for passengers’
-                        convenience. 
-                      </li>
-
-                      <li>
-                        Luggage carts are provided to transport bulky objects
-                        for a fee of at least $6.
-                      </li>
-
-                      <li>
-                        Luggage carts are not typically permitted at MCO
-                        Frontier terminal TA security areas. 
-                      </li>
-
-                      <li>Most travellers can visit Level 1 of TA to shop.</li>
-                    </ul>
-
-                    <p>
-                      At MCO Airport, no specific service provides transport to
-                      TA from other regions. Shuttle vans, however, can be hired
-                      to transport passengers to and from the Airport. They are
-                      found near the Ground Transportation Curb on Level 1.
-                      Passengers can access this facility using Gates A19 to
-                      A21. These shuttle vehicles need a per-passenger fee. 
-                    </p>
-
-                    <p>
-                      Multiple flights depart from Orlando International
-                      Airport’s Frontier Terminal A regularly. Numerous
-                      facilities are provided on the ground to handle these
-                      various flights efficiently. Some of these include
-                      parking, lost and found, and eateries. A map is also
-                      provided to help you get to these destinations quickly.
-                    </p>
-                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: postData?.content }}
+                    className={styles.para}
+                  />
                 </div>
               </main>
             </div>
             <aside className={styles.sidebar}>
               <ul>
-                {categories.map((item) => (
+                {categories.map((item, index) => (
                   <li key={item.id}>
                     <div className={styles[`image-container`]}>
                       <Image
-                        src={item.img}
-                        alt={item.title}
+                        src={
+                          item.node?.posts?.edges[0]?.node?.featuredImage?.node
+                            ?.sourceUrl
+                        }
+                        alt={item.node?.name}
                         fill
                         className={styles.image}
                       />
                     </div>
-                    <h6>{item.title}</h6>
+                    <h6>{item.node?.name}</h6>
                   </li>
                 ))}
               </ul>
@@ -313,57 +172,60 @@ const SingleBlog = async () => {
               </svg>
             </div>
             <div className={styles.grid}>
-              <div className={styles.card}>
-                <div className={styles[`image-container`]}>
-                  <Image
-                    src={"/exploreNow/1.png"}
-                    fill
-                    alt="recent-blog"
-                    className={styles.image}
-                  />
+              {recentPosts.map((item, index) => (
+                <div className={styles.card} key={index}>
+                  <div className={styles[`image-container`]}>
+                    <Image
+                      src={item.node?.featuredImage?.node?.sourceUrl}
+                      fill
+                      alt="recent-blog"
+                      className={styles.image}
+                    />
+                  </div>
+                  <div className={styles.desc}>
+                    <h5>{item.node?.title}</h5>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: item.node?.excerpt }}
+                      className={styles.excerpt}
+                    />
+                  </div>
+                  <div className={styles.action}>
+                    <Link
+                      href={`/${item.node?.slug}`}
+                      className={styles.button}
+                    >
+                      <span>Read More</span>{" "}
+                      <svg
+                        viewBox="0 0 25 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M7.50003 11.0157H13.4072V16.9229"
+                          stroke="white"
+                          strokeWidth="1.96906"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M3.56191 20.8608L13.4072 11.0155"
+                          stroke="white"
+                          strokeWidth="1.96906"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M3.56187 11.0155V4.12379C3.56187 3.86268 3.6656 3.61226 3.85023 3.42762C4.03487 3.24299 4.28529 3.13926 4.5464 3.13926H20.2989C20.56 3.13926 20.8104 3.24299 20.9951 3.42762C21.1797 3.61226 21.2834 3.86268 21.2834 4.12379V19.8763C21.2834 20.1374 21.1797 20.3878 20.9951 20.5725C20.8104 20.7571 20.56 20.8608 20.2989 20.8608H13.4072"
+                          stroke="white"
+                          strokeWidth="1.96906"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
-                <div className={styles.desc}>
-                  <h5>Figma</h5>
-                  <p>
-                    Figma ipsum component variant main layer. Thumbnail project
-                    mask.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.card}>
-                <div className={styles[`image-container`]}>
-                  <Image
-                    src={"/exploreNow/1.png"}
-                    fill
-                    alt="recent-blog"
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.desc}>
-                  <h5>Figma</h5>
-                  <p>
-                    Figma ipsum component variant main layer. Thumbnail project
-                    mask.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.card}>
-                <div className={styles[`image-container`]}>
-                  <Image
-                    src={"/exploreNow/1.png"}
-                    fill
-                    alt="recent-blog"
-                    className={styles.image}
-                  />
-                </div>
-                <div className={styles.desc}>
-                  <h5>Figma</h5>
-                  <p>
-                    Figma ipsum component variant main layer. Thumbnail project
-                    mask.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
