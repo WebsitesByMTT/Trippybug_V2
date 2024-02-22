@@ -67,6 +67,10 @@
               font-size: 2vw;
             }
           }
+
+          li:not(:nth-child(1)) {
+            cursor: pointer;
+          }
         }
       }
     }
