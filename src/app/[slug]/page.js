@@ -122,6 +122,7 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
                 </div>
               </header>
               <main>
+              
                 <div className={styles[`blog-banner`]}>
                   <Image
                     src={postData.featuredImage?.node?.sourceUrl}

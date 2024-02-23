@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -33,6 +33,10 @@ const ExploreNowSlider = ({ data }) => {
       },
     ],
   };
+
+  useEffect(() => {
+    console.log("PREVIOUS : ", sliderRef?.current);
+  }, [sliderRef]);
 
   return (
     <section className={styles.cards}>

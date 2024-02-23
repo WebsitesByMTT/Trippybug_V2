@@ -1,23 +1,17 @@
-import Navbar from "@/components/navbar/Navbar";
-import styles from "./blogs.module.scss";
+import { getAllPosts, getCategories } from "@/app/lib/data";
 import Categories from "@/components/categories/Categories";
+import Navbar from "@/components/navbar/Navbar";
+import React from "react";
+import styles from "../blogs.module.scss";
 import Image from "next/image";
 import CategoriesGrid from "@/components/categoriesGrid/CategoriesGrid";
 import Footer from "@/components/footer/Footer";
-import { getAllPosts, getCategories } from "../lib/data";
 import Link from "next/link";
 
-const Blogs = async ({ params, preview = false, previewData }) => {
+const page = async ({ params, preview = false, previewData }) => {
   const { edges: categories } = await getCategories(preview);
   const { edges: posts } = await getAllPosts();
-  const { edges: nextPosts } = await getAllPosts(
-    false,
-    posts?.pageInfo?.endCursor
-  );
 
-  const handleNextPage = ()=>{
-    
-  }
   return (
     <>
       <Navbar />
@@ -28,7 +22,7 @@ const Blogs = async ({ params, preview = false, previewData }) => {
         <div className={styles.larger}>
           {categories.map((item, index) => (
             <Link
-              href={`/blogs?category=${item.node?.name}`}
+              href={`/${item.node?.name}`}
               key={item.node?.id}
               className={styles.link}
             >
@@ -50,7 +44,7 @@ const Blogs = async ({ params, preview = false, previewData }) => {
       </div>
       <div className={styles.blogs}>
         <div className={styles.container}>
-          <CategoriesGrid posts={[...posts, ...nextPosts]} />
+          <CategoriesGrid posts={posts} />
         </div>
       </div>
       <Footer />
@@ -58,4 +52,4 @@ const Blogs = async ({ params, preview = false, previewData }) => {
   );
 };
 
-export default Blogs;
+export default page;

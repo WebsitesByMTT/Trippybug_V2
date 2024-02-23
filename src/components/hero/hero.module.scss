@@ -41,9 +41,12 @@
       transition: all 0.2s ease-in-out;
     }
   }
+  .animate {
+    transition: all 0.2s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+  }
 
   .content {
-    padding: 2.36vw 4.72vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +55,7 @@
 
     .container {
       display: flex;
-      width: 100%;
+      width: 95%;
       height: 100%;
       flex-direction: column;
 

@@ -71,53 +71,6 @@ export async function getAllCategoriesWithSlug() {
   return data?.categories;
 }
 
-//modified to get all blogs in blogs page
-export async function getAllPostsForHome(preview, after) {
-  const data = await fetchAPI(
-    `query AllPosts($after: String) {
-		posts(first: 100, after: $after, where: { orderby: { field: DATE, order: DESC } }) {
-		  pageInfo {
-			hasNextPage
-			endCursor
-		  }
-		  edges {
-			node {
-			  title
-			  excerpt
-			  slug
-			  date
-			  featuredImage {
-				node {
-				  sourceUrl(size:MEDIUM )
-				}
-			  }
-			  author {
-				node {
-				  name
-				  firstName
-				  lastName
-				  avatar {
-					url
-				  }
-				}
-			  }
-			}
-		  }
-		}
-	  }
-	`,
-    {
-      variables: {
-        after,
-        onlyEnabled: !preview,
-        preview,
-      },
-    }
-  );
-
-  return data?.posts;
-}
-
 export async function getPostsByCategoryId(categoryId) {
   const data = await fetchAPI(
     `
@@ -201,7 +154,6 @@ export async function getPostBySlug(slug, preview, previewData) {
 
   const isDraft = isSamePost && postPreview?.status === "draft";
   const isRevision = isSamePost && postPreview?.status === "publish";
-
 
   const data = await fetchAPI(
     `
@@ -579,4 +531,51 @@ export async function getCategories(ids = [], preview) {
   );
 
   return data?.categories;
+}
+
+// GET ALL POSTS
+export async function getAllPosts(preview, after) {
+  const data = await fetchAPI(
+    `query AllPosts($after: String) {
+		  posts(first: 100, after: $after, where: { orderby: { field: DATE, order: DESC } }) {
+			pageInfo {
+			  hasNextPage
+			  endCursor
+			}
+			edges {
+			  node {
+				title
+				excerpt
+				slug
+				date
+				featuredImage {
+				  node {
+					sourceUrl(size:MEDIUM )
+				  }
+				}
+				author {
+				  node {
+					name
+					firstName
+					lastName
+					avatar {
+					  url
+					}
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  `,
+    {
+      variables: {
+        after,
+        onlyEnabled: !preview,
+        preview,
+      },
+    }
+  );
+
+  return data?.posts;
 }

@@ -42,14 +42,14 @@ const Contact = ({ showContactHanlder, submiteHandler }) => {
                 <path
                   d="M3 3L21 21"
                   stroke="#0F5A83"
-                  stroke-width="5"
-                  stroke-linecap="round"
+                  strokeWidth="5"
+                  strokeLinecap="round"
                 />
                 <path
                   d="M3 21L21 3"
                   stroke="#0F5A83"
-                  stroke-width="5"
-                  stroke-linecap="round"
+                  strokeWidth="5"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>
