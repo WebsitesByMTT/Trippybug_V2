@@ -21,13 +21,16 @@ const Flights = async () => {
       <div className={styles.flights}>
         <SearchBox />
         <div className={styles.container}>
-          <Titles
-            title="TRENDING BLOG"
-            subtitle="Find Your Dream Destination"
-            desc="Explore our best-recommended selection of places and find your dream gateway"
-          />
-
-          <FlightsSlider data={flightsData} />
+          <div className={styles.text}>
+            <Titles
+              title="TRENDING BLOG"
+              subtitle="Find Your Dream Destination"
+              desc="Explore our best-recommended selection of places and find your dream gateway"
+            />
+          </div>
+          <div className={styles.content}>
+            <FlightsSlider data={flightsData} />
+          </div>
         </div>
       </div>
       <Footer />

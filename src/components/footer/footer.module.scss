@@ -2,38 +2,71 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .footer {
-  padding: 2vw 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 3rem 0rem;
+
+  @include media.for-greater-than-medium {
+    padding: 5rem 0rem;
+  }
 
   .container {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 4vh;
+    gap: 3rem;
+
+    @include media.for-greater-than-medium {
+      gap: 5rem;
+    }
 
     .top {
       display: flex;
       flex-wrap: wrap;
-      gap: 4vw;
+      gap: 2rem;
+
+      @include media.for-greater-than-medium {
+        gap: 5rem;
+      }
 
       .left {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
 
         @include media.for-greater-than-medium {
           align-items: flex-start;
         }
 
-        p {
-          font-size: 1.2vh;
-          text-align: center;
+        .image-container {
+          position: relative;
+          width: 10.9rem;
+          height: 4.9rem;
 
           @include media.for-greater-than-medium {
-            font-size: 1.2vw;
+            width: 24.4rem;
+            height: 10.9573rem;
+          }
+
+          .image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        p {
+          color: #000;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: left;
+
+          @include media.for-greater-than-medium {
+            font-size: 2rem;
             text-align: left;
           }
         }
@@ -41,30 +74,48 @@
 
       .right {
         flex: 1.5;
-
         display: flex;
         justify-content: space-between;
-        gap: 1vw;
+        // gap: 4rem;
+
+        gap: 4rem;
 
         ul {
           display: flex;
           flex-direction: column;
-          gap: 1vh;
+          gap: 0.3rem;
+
           li {
-            font-size: 1.2vh;
+            color: #000;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.05rem;
 
             @include media.for-greater-than-medium {
-              font-size: 1.2vw;
+              font-size: 2.0939rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              letter-spacing: 0.1047rem;
             }
           }
+
           & > :nth-child(1) {
-            font-size: 2vh;
-            color: map-get($colors, secondary);
-            margin-bottom: 2vh;
+            color: #ff991a;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
             text-transform: uppercase;
+            margin-bottom: 3rem;
+
+            font-size: 13px;
+            letter-spacing: 0.117rem;
 
             @include media.for-greater-than-medium {
-              font-size: 2vw;
+              font-size: 2.7914rem;
+              letter-spacing: 0.2512rem;
             }
           }
 
@@ -89,12 +140,18 @@
     }
 
     .last {
+      color: #000;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.1891rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
-      margin-bottom: 2rem;
+      letter-spacing: 0.0595rem;
+
+      @include media.for-greater-than-medium {
+        font-size: 2rem;
+        letter-spacing: 0.15rem;
+      }
     }
   }
 }

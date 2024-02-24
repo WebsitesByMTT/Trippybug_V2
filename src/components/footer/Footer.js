@@ -31,13 +31,14 @@ const Footer = () => {
         <div className={styles.container}>
           <div className={styles.top}>
             <div className={styles.left}>
-              <Image
-                src="/Logo.svg"
-                alt="logo"
-                width={200}
-                height={100}
-                className={styles.image}
-              />
+              <Link href={"/"} className={styles[`image-container`]}>
+                <Image
+                  src="/Logo.svg"
+                  alt="logo"
+                  fill
+                  className={styles.image}
+                />
+              </Link>
 
               <p>
                 Figma ipsum component variant main layer. Connection ipsum

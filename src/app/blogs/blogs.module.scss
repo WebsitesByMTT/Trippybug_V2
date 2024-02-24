@@ -24,8 +24,8 @@
       gap: 1rem;
 
       .image-container {
-        width: 5vw;
-        height: 5vw;
+        width: 11.1rem;
+        height: 11.1rem;
         border-radius: 50%;
         position: relative;
 
@@ -37,15 +37,29 @@
       }
 
       h6 {
-        font-size: 1.4rem;
         text-align: center;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+
+        color: #363636;
+        text-align: center;
+        font-size: 2.1rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
       }
     }
   }
 }
 
 .blogs {
-  padding: 4rem;
+  padding: 4rem 2rem;
+
+  @include media.for-greater-than-medium {
+    padding: 4rem;
+  }
 
   .container {
     display: flex;

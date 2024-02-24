@@ -26,9 +26,9 @@ const ExploreNowSlider = ({ data }) => {
     draggable: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],

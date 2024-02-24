@@ -7,13 +7,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.container}>
         <Link href={"/"} className={styles.logo}>
-          <Image
-            className={styles.image}
-            src={"/logo.png"}
-            width={244}
-            height={109}
-            alt="logo"
-          />
+          <Image className={styles.image} src={"/logo.png"} fill alt="logo" />
         </Link>
         <ul className={styles.links}>
           <li>

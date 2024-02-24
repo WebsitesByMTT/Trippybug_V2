@@ -61,7 +61,7 @@ const Hero = () => {
       setFade(true); // Trigger fade effect
       setTimeout(() => {
         setFade(false); // Reset fade after animation completes
-      }, 1000);
+      }, 500);
     }, 8000);
 
     return () => clearTimeout(timer);
@@ -74,7 +74,7 @@ const Hero = () => {
     setFade(true); // Trigger fade effect
     setTimeout(() => {
       setFade(false); // Reset fade after animation completes
-    }, 1000);
+    }, 500);
   };
   return (
     <div className={styles.hero}>
@@ -92,7 +92,10 @@ const Hero = () => {
           <div className={styles.container}>
             <div className={styles.top}>
               <div className={styles.left}>
-                <div className={styles.titles} onClick={updateIndex}>
+                <div
+                  className={`${styles["titles"]} ${fade ? styles.fade : ""}`}
+                  onClick={updateIndex}
+                >
                   <h1>{data[currentDataIndex].title}</h1>
                   <p>{data[currentDataIndex].subtitle}</p>
                 </div>

@@ -14,10 +14,17 @@
     justify-content: space-between;
     color: #0f5a83;
     width: 95%;
+    padding: 1.9rem 0rem;
 
     .logo {
       position: relative;
-      width: 24rem;
+      width: 10.9rem;
+      height: 4.9rem;
+
+      @include media.for-greater-than-medium {
+        width: 24.4rem;
+        height: 10.9573rem;
+      }
 
       img {
         width: 100%;
@@ -44,21 +51,20 @@
       }
 
       @include media.only-for-smaller {
+        width: 90%;
+        height: 4.3rem;
         position: fixed;
         left: 50%;
         bottom: 0;
         transform: translate(-50%, -50%);
-        border-radius: 3rem;
-        background-color: map-get($colors, secondary);
-
-        height: 7rem;
-        width: 90%;
+        border-radius: 12px;
+        background: rgba(255, 153, 26, 0.95);
 
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0;
-        padding: 1rem;
+        // padding: 1rem;
 
         & > :nth-child(2) {
           border-left: 1px solid rgba(255, 255, 255, 0.3);
@@ -78,8 +84,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            box-sizing: border-box;
+
+            color: #fff;
+            font-size: 2rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
           }
         }
       }

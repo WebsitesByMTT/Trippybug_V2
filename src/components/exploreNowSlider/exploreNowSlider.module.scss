@@ -8,7 +8,6 @@
 
   overflow: hidden;
   padding: 0rem 1rem;
-
   border-radius: 2.3rem;
 
   @include media.for-greater-than-smaller {
@@ -37,7 +36,8 @@
 
     .image-container {
       position: relative;
-      height: 40rem;
+      // height: 40rem;
+      padding-top: 150%;
 
       border-radius: 1.6rem;
       overflow: hidden;
