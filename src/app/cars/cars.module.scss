@@ -2,39 +2,46 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .cars {
-  position: relative;
-  padding: 8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  margin-top: 1.5rem;
+  gap: 3rem;
+  overflow: hidden;
 
   @include media.for-greater-than-medium {
-    padding: 8rem 6rem;
-  }
-
-  @include media.for-greater-than-large {
-    padding: 8rem;
+    margin-top: 3rem;
+    gap: 5rem;
   }
 
   .container {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 4vh;
 
     .content {
       .cards {
         display: flex;
         flex-direction: column;
-        gap: 4rem;
+        gap: 1.5rem;
+
+        @include media.for-greater-than-medium {
+          gap: 3rem;
+        }
 
         .card {
           display: flex;
           border-radius: 1.6055rem;
           border: 1.338px solid rgba(0, 0, 0, 0.35);
           overflow: hidden;
+          padding: 0.2rem;
+          gap: 1.5rem;
 
           .image-container {
             flex: 1;
-            height: 31rem;
             position: relative;
             border-radius: 1.6055rem 0rem 0rem 1.6055rem;
             overflow: hidden;
@@ -46,32 +53,70 @@
             }
           }
           .detail {
-            flex: 1.5;
-            padding: 4rem;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 1rem;
+
+            @include media.for-greater-than-medium {
+              padding: 5rem;
+            }
 
             .title {
               display: flex;
               flex-direction: column;
-              gap: 2rem;
+              gap: 0.6rem;
 
               h4 {
-                font-size: map-get($sizes, h4);
+                color: #000;
+                font-size: 1.8rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                letter-spacing: 0.09rem;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+
+                @include media.for-greater-than-medium {
+                  font-size: 3.6125rem;
+                  letter-spacing: 0.1806rem;
+                }
               }
 
               p {
                 color: #757474;
-                font-size: map-get($sizes, p);
+                font-size: 1rem;
+                font-style: normal;
                 font-weight: 400;
+                line-height: normal;
+                letter-spacing: 0.05rem;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+
+                @include media.for-greater-than-medium {
+                  font-size: 2.5421rem;
+                  letter-spacing: 0.1271rem;
+                }
               }
             }
 
             .button {
+              margin-top: 1rem;
+
+              @include media.for-greater-than-medium {
+                margin-top: 4rem;
+              }
               button {
                 border: none;
                 background: none;
+                cursor: pointer;
 
                 display: flex;
                 align-items: center;
@@ -79,8 +124,28 @@
                 gap: 2rem;
 
                 span {
-                  color: map-get($colors, primary);
-                  font-size: 2rem;
+                  color: #0f5a83;
+                  text-align: center;
+                  font-size: 1.1rem;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  letter-spacing: 0.055rem;
+
+                  @include media.for-greater-than-medium {
+                    font-size: 3.3449rem;
+                    letter-spacing: 0.1672rem;
+                  }
+                }
+
+                svg {
+                  width: 2.2rem;
+                  height: 0.7rem;
+
+                  @include media.for-greater-than-medium {
+                    width: 6.8rem;
+                    height: 2rem;
+                  }
                 }
               }
             }

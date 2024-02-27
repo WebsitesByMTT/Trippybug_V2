@@ -1,8 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
 
-import Navbar from "@/components/navbar/Navbar";
-import SearchBox from "@/components/searchBox/SearchBox";
 import { getPostsByCategoryName } from "./lib/data";
 import Titles from "@/components/titles/Titles";
 import LocationMarker from "@/components/SVG/LocationMarker";
@@ -94,7 +92,7 @@ const Home = async () => {
                   <span>more</span>
                 </p>
               </div>
-              .
+
               <div className={styles[`right-content`]}>
                 <ExploreNowSlider data={exploreNowData} />
 
@@ -105,8 +103,6 @@ const Home = async () => {
                     </span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="200"
-                      height="15"
                       viewBox="0 0 200 15"
                       fill="none"
                       className={styles.arrow}
@@ -128,11 +124,13 @@ const Home = async () => {
       {/* Trending Now  */}
       <section className={styles[`trending-now`]}>
         <div className={styles.container}>
-          <Titles
-            title="TRENDING NOW"
-            subtitle="Find Your Dream Destination"
-            desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
-          />
+          <div className={styles.text}>
+            <Titles
+              title="TRENDING NOW"
+              subtitle="Find Your Dream Destination"
+              desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
+            />
+          </div>
           <div className={styles.content}>
             <TrendingNowSlider data={trendingNowData} />
           </div>

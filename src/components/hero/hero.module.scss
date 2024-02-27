@@ -5,15 +5,6 @@
   position: relative;
   z-index: 1;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   .bg-container {
     height: 100%;
     width: 100%;
@@ -21,6 +12,15 @@
     z-index: -3;
     top: 0;
     left: 0;
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
+
+    &.fade {
+      .bg {
+        transform: scale(1);
+      }
+      /* Change opacity to 1 to trigger the fade-in effect */
+    }
 
     &::before {
       content: "";
@@ -29,7 +29,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      // background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.2);
       z-index: 99;
     }
 
@@ -37,13 +37,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      animation: fadeIn 1s ease-in-out;
-      transition: all 0.2s ease-in-out;
+      transform: scale(1.1);
+      transition: transform 0.5s ease-in-out;
     }
   }
 
   .content {
-    padding: 2.36vw 4.72vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,11 +51,9 @@
 
     .container {
       display: flex;
-      width: 100%;
+      width: 90%;
       height: 100%;
       flex-direction: column;
-
-      gap: 5vw;
 
       @include media.for-greater-than-medium {
         gap: 0;
@@ -87,29 +84,38 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 4vw;
             cursor: pointer;
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+
+            &.fade {
+              opacity: 0.5;
+            }
 
             h1 {
-              // font-size: map-get($sizes, h1);
-              font-size: 3vh;
-              text-align: center;
+              color: #fff;
+              font-size: 4rem;
+              font-style: normal;
+              font-weight: 800;
+              line-height: normal;
 
-              @include media.for-greater-than-medium() {
+              @include media.for-greater-than-medium {
+                font-size: 6.734rem;
                 text-align: left;
-                font-size: 5vw;
-                line-height: 5vw;
               }
             }
 
             p {
-              // font-size: map-get($sizes, p);
-              font-size: 1.6vh;
-              text-align: center;
+              color: #e3dfd8;
+              font-size: 2.1328rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
 
-              @include media.for-greater-than-medium() {
-                font-size: 1.6vw;
-                text-align: left;
+              display: none;
+
+              @include media.for-greater-than-medium {
+                display: block;
               }
             }
           }
@@ -149,7 +155,7 @@
         }
 
         .map {
-          width: 100%;
+          width: 90%;
 
           @include media.for-greater-than-smaller {
             width: 70vw;

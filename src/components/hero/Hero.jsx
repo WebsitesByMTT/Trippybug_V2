@@ -8,7 +8,6 @@ import Vitenam from "../SVG/Vitenam";
 import Paris from "../SVG/Paris";
 import Agra from "../SVG/Agra";
 import Kashmir from "../SVG/Kashmir";
-import Slider from "react-slick";
 import { useEffect, useRef, useState } from "react";
 
 const data = [
@@ -52,12 +51,17 @@ const data = [
 
 const Hero = () => {
   const [currentDataIndex, setCurrentDataIndex] = useState(0);
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentDataIndex((prevIndex) =>
         prevIndex === data.length - 1 ? 0 : prevIndex + 1
       );
+      setFade(true); // Trigger fade effect
+      setTimeout(() => {
+        setFade(false); // Reset fade after animation completes
+      }, 500);
     }, 8000);
 
     return () => clearTimeout(timer);
@@ -67,12 +71,16 @@ const Hero = () => {
     setCurrentDataIndex((prevIndex) =>
       prevIndex === data.length - 1 ? 0 : prevIndex + 1
     );
+    setFade(true); // Trigger fade effect
+    setTimeout(() => {
+      setFade(false); // Reset fade after animation completes
+    }, 500);
   };
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
         <Navbar />
-        <div className={styles[`bg-container`]}>
+        <div className={`${styles["bg-container"]} ${fade ? styles.fade : ""}`}>
           <Image
             src={data[currentDataIndex].bg}
             fill
@@ -84,7 +92,10 @@ const Hero = () => {
           <div className={styles.container}>
             <div className={styles.top}>
               <div className={styles.left}>
-                <div className={styles.titles} onClick={updateIndex}>
+                <div
+                  className={`${styles["titles"]} ${fade ? styles.fade : ""}`}
+                  onClick={updateIndex}
+                >
                   <h1>{data[currentDataIndex].title}</h1>
                   <p>{data[currentDataIndex].subtitle}</p>
                 </div>

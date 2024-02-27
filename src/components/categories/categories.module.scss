@@ -1,5 +1,4 @@
 .list {
-  
   li {
     display: flex !important;
     flex-direction: column;
@@ -8,8 +7,9 @@
     gap: 1rem;
 
     .image-container {
-      width: 5vw;
-      height: 5vw;
+      width: 7.1118rem;
+      height: 7.1118rem;
+
       border-radius: 50%;
       position: relative;
 
@@ -21,8 +21,17 @@
     }
 
     h6 {
-      font-size: 1.4rem;
       text-align: center;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+
+      color: #363636;
+      font-size: 1.3455rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
     }
   }
 }

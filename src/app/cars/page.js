@@ -2,6 +2,7 @@ import Banner from "@/components/banner/Banner";
 import styles from "./cars.module.scss";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
+import SearchBox from "@/components/searchBox/SearchBox";
 
 const data = [
   {
@@ -40,6 +41,8 @@ const Cars = () => {
       />
 
       <div className={styles.cars}>
+        <SearchBox />
+
         <div className={styles.container}>
           <div className={styles.content}>
             <ul className={styles.cards}>
@@ -63,8 +66,6 @@ const Cars = () => {
                       <button>
                         <span>Read More</span>
                         <svg
-                          width="68"
-                          height="20"
                           viewBox="0 0 68 20"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +82,9 @@ const Cars = () => {
               ))}
             </ul>
           </div>
-
-          <Footer />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

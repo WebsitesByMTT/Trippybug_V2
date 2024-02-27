@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -26,13 +26,17 @@ const ExploreNowSlider = ({ data }) => {
     draggable: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
   };
+
+  useEffect(() => {
+    console.log("PREVIOUS : ", sliderRef?.current);
+  }, [sliderRef]);
 
   return (
     <section className={styles.cards}>
