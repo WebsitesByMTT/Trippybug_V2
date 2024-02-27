@@ -49,7 +49,7 @@ const Home = async () => {
       <section className={styles[`explore-now`]}>
         <div className={styles.container}>
           <Titles
-            title="EXPLORE NOW"
+            title="Explore Now"
             subtitle="Find Your Dream Destination"
             desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
           />
@@ -126,7 +126,7 @@ const Home = async () => {
         <div className={styles.container}>
           <div className={styles.text}>
             <Titles
-              title="TRENDING NOW"
+              title="Trending Now"
               subtitle="Find Your Dream Destination"
               desc="Finding The Perfect Travel Flight Is Like Uncovering A Hidden Treasure"
             />

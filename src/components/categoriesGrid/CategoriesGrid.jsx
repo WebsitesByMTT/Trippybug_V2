@@ -4,16 +4,18 @@ import Image from "next/image";
 import styles from "./categoriesGrid.module.scss";
 import Link from "next/link";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const CategoriesGrid = ({ posts }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const searchParams = useSearchParams();
+  const search = searchParams.get("category");
+
   const postsPerPage = 12;
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  console.log("POST : ", posts.length);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -27,6 +29,7 @@ const CategoriesGrid = ({ posts }) => {
   const handleNextPage = () => {
     paginate(currentPage + 1);
   };
+
   return (
     <>
       <div className={styles.grid}>

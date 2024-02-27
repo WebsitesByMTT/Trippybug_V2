@@ -27,6 +27,7 @@
     justify-content: center;
     width: 50%;
     gap: 0.5rem;
+    transition: all 0.2s ease-in-out;
 
     @include media.for-greater-than-medium {
       top: -2rem;
@@ -55,6 +56,7 @@
 
     .active {
       background: map-get($colors, primary);
+      transition: all 0.2s ease-in-out;
     }
   }
 

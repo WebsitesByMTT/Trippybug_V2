@@ -9,7 +9,7 @@
   overflow: hidden;
 
   @include media.for-greater-than-medium {
-    margin-top: 5rem;
+    margin: 10rem 0rem;
   }
 
   .container {

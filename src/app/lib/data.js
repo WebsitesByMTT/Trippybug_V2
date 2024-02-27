@@ -409,12 +409,12 @@ export async function getCategoryBySlug(slug) {
 }
 
 // POST BY CATEGORY NAME
-export const getPostsByCategoryName = async (category) => {
+export const getPostsByCategoryName = async (category, count) => {
   const data = await fetchAPI(`
     query PostsByCategoryName {
         posts(
             where: {categoryName: "${category}",orderby: {field: DATE, order: DESC}}
-            first: 6
+            first: ${count | 6}
         ) {
             edges {
                 node {
