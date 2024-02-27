@@ -12,23 +12,38 @@ import {
 } from "../lib/data";
 import Link from "next/link";
 
-const Blogs = async ({
-  params,
-  searchParams,
-  preview = false,
-  previewData,
-}) => {
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+const Blogs = async ({ searchParams, preview = false }) => {
+  let postsData;
+
+  if (isEmpty(searchParams) || searchParams.category === "all") {
+    const { edges: posts } = await getAllPosts();
+    const { edges: nextPosts } = await getAllPosts(
+      false,
+      posts?.pageInfo?.endCursor
+    );
+    postsData = [...posts, ...nextPosts];
+  } else {
+    let searchFor = searchParams.category.toLowerCase();
+
+    if (searchFor === "airlines") {
+      searchFor = "best airlines";
+    } else if (searchFor === "cars") {
+      searchFor = "cars rental";
+    }
+    // Remove existing hyphens
+    searchFor = searchFor.replace(/-/g, "");
+    // Replace spaces with hyphens
+    searchFor = searchFor.replace(/\s+/g, "-");
+
+    const { edges: posts } = await getPostsByCategoryName(searchFor, 12);
+    postsData = posts;
+  }
+
   const { edges: categories } = await getCategories(preview);
-  const { edges: posts } = await getAllPosts();
-  const { edges: nextPosts } = await getAllPosts(
-    false,
-    posts?.pageInfo?.endCursor
-  );
-
-  const searchFor = searchParams?.category?.toLowerCase().replace(/\s+/g, "-");
-
-  console.log("SEARCH FOR : ", searchFor);
-  const handleNextPage = () => {};
 
   return (
     <>
@@ -38,31 +53,45 @@ const Blogs = async ({
           <Categories data={categories} />
         </div>
         <div className={styles.larger}>
-          {categories.map((item, index) => (
-            <Link
-              href={`/blogs?category=${item.node?.name}`}
-              key={item.node?.id}
-              className={styles.link}
-            >
-              <div className={styles[`image-container`]}>
-                <Image
-                  src={
-                    item.node?.posts?.edges[0]?.node?.featuredImage?.node
-                      ?.sourceUrl
-                  }
-                  fill
-                  alt={item.node?.name}
-                  className={styles.image}
-                />
-              </div>
-              <h6>{item.node?.name}</h6>
-            </Link>
-          ))}
+          <Link href={`/blogs?category=all`} className={styles.link}>
+            <div className={styles[`image-container`]}>
+              <Image
+                src={"/all.png"}
+                fill
+                alt={"all"}
+                className={styles.image}
+              />
+            </div>
+            <h6>All</h6>
+          </Link>
+          {categories.map(
+            (item, index) =>
+              item.node?.name != "Gallery" && (
+                <Link
+                  href={`/blogs?category=${item.node?.name}`}
+                  key={item.node?.id}
+                  className={styles.link}
+                >
+                  <div className={styles[`image-container`]}>
+                    <Image
+                      src={
+                        item.node?.posts?.edges[0]?.node?.featuredImage?.node
+                          ?.sourceUrl
+                      }
+                      fill
+                      alt={item.node?.name}
+                      className={styles.image}
+                    />
+                  </div>
+                  <h6>{item.node?.name}</h6>
+                </Link>
+              )
+          )}
         </div>
       </div>
       <div className={styles.blogs}>
         <div className={styles.container}>
-          <CategoriesGrid posts={[...posts, ...nextPosts]} />
+          <CategoriesGrid posts={postsData} />
         </div>
       </div>
       <Footer />

@@ -34,10 +34,6 @@ const ExploreNowSlider = ({ data }) => {
     ],
   };
 
-  useEffect(() => {
-    console.log("PREVIOUS : ", sliderRef?.current);
-  }, [sliderRef]);
-
   return (
     <section className={styles.cards}>
       <Slider {...carouselSettings} ref={sliderRef}>

@@ -112,12 +112,15 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.bottom}>
+            <div className={styles.middle}>
               <div className={styles.map}>
                 {data[currentDataIndex].timeline}
               </div>
             </div>
-            <SearchBox />
+
+            <div className={styles.bottom}>
+            <SearchBox/>
+            </div>
           </div>
         </div>
       </div>

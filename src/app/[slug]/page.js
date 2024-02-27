@@ -1,4 +1,3 @@
-// "use client";
 import Navbar from "@/components/navbar/Navbar";
 import React from "react";
 import styles from "./singleBlog.module.scss";
@@ -51,20 +50,20 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
             <div className={styles.content}>
               <header>
                 <div className={styles.title}>
-                  <h1>{postData.title}</h1>
+                  <h1>{postData?.title}</h1>
                 </div>
                 <div className={styles.user}>
                   <div className={styles[`image-container`]}>
                     <Image
-                      src={postData.author?.node?.avatar?.url}
-                      alt={postData.author?.node?.name}
+                      src={postData?.author?.node?.avatar?.url}
+                      alt={postData?.author?.node?.name}
                       fill
                       className={styles.image}
                     />
                   </div>
                   <div className={styles.detail}>
-                    <h4>{postData.author?.node?.name}</h4>
-                    <p>{calculateTimeAgo(postData.date)}</p>
+                    <h4>{postData?.author?.node?.name}</h4>
+                    <p>{calculateTimeAgo(postData?.date)}</p>
                   </div>
                 </div>
 
@@ -125,9 +124,9 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
               
                 <div className={styles[`blog-banner`]}>
                   <Image
-                    src={postData.featuredImage?.node?.sourceUrl}
+                    src={postData?.featuredImage?.node?.sourceUrl}
                     fill
-                    alt={postData.title}
+                    alt={postData?.title}
                     className={styles.image}
                   />
                 </div>
