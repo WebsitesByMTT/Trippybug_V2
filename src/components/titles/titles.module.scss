@@ -7,19 +7,20 @@
   justify-content: center;
   flex-direction: column;
   // border: 1px solid red;
-  gap: .5rem;
+  gap: 2rem;
 
   h2 {
     color: #eb6d27;
-    font-size: 2rem;
+    font-size: 4rem;
     font-style: normal;
-    font-weight: 700;
+    font-weight: bold;
     line-height: normal;
     letter-spacing: 0.1rem;
     text-align: left;
+    text-transform: capitalize;
 
     @include media.for-greater-than-medium {
-      font-size: 3.79rem;
+      font-size: 8rem;
       letter-spacing: 0.1895rem;
       text-align: center;
     }
@@ -30,10 +31,10 @@
     font-size: 2.5rem;
     font-style: normal;
     font-weight: 800;
-    line-height:2.9rem;
+    line-height: 1;
     text-transform: capitalize;
     letter-spacing: 0.128rem;
-    
+
     @include media.for-greater-than-medium {
       text-align: center;
       font-size: 5.052rem;
@@ -48,7 +49,7 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.075rem;
-    
+
     @include media.for-greater-than-medium {
       text-align: center;
       text-align: center;

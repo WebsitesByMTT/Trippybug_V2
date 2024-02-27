@@ -1,13 +1,23 @@
+"use server";
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./blogs.module.scss";
 import Categories from "@/components/categories/Categories";
 import Image from "next/image";
 import CategoriesGrid from "@/components/categoriesGrid/CategoriesGrid";
 import Footer from "@/components/footer/Footer";
-import { getAllPosts, getCategories } from "../lib/data";
+import {
+  getAllPosts,
+  getCategories,
+  getPostsByCategoryName,
+} from "../lib/data";
 import Link from "next/link";
 
-const Blogs = async ({ params, preview = false, previewData }) => {
+const Blogs = async ({
+  params,
+  searchParams,
+  preview = false,
+  previewData,
+}) => {
   const { edges: categories } = await getCategories(preview);
   const { edges: posts } = await getAllPosts();
   const { edges: nextPosts } = await getAllPosts(
@@ -15,9 +25,11 @@ const Blogs = async ({ params, preview = false, previewData }) => {
     posts?.pageInfo?.endCursor
   );
 
-  const handleNextPage = ()=>{
-    
-  }
+  const searchFor = searchParams?.category?.toLowerCase().replace(/\s+/g, "-");
+
+  console.log("SEARCH FOR : ", searchFor);
+  const handleNextPage = () => {};
+
   return (
     <>
       <Navbar />
