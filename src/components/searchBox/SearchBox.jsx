@@ -46,6 +46,7 @@ const SearchBox = () => {
             frameBorder="0"
             allowFullScreen="true"
             className={styles.flights}
+            title="Flights"
           ></iframe>
         )}
         {activeTab === "Hotels" && (
@@ -54,6 +55,7 @@ const SearchBox = () => {
             scrolling="no"
             frameBorder="0"
             className={styles.hotels}
+            title="Hotels"
           ></iframe>
         )}
         {activeTab === "Cars" && (
@@ -62,6 +64,7 @@ const SearchBox = () => {
             frameBorder="0"
             src={"/kiwi-form"}
             className={styles.cars}
+            title="Cars"
           />
         )}
       </div>

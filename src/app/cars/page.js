@@ -41,8 +41,9 @@ const Cars = () => {
       />
 
       <div className={styles.cars}>
-        <SearchBox />
-
+        <div className={styles.search}>
+          <SearchBox />
+        </div>
         <div className={styles.container}>
           <div className={styles.content}>
             <ul className={styles.cards}>

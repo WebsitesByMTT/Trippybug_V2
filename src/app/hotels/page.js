@@ -18,9 +18,9 @@ const Hotels = async () => {
       />
 
       <div className={styles.hotels}>
-        
-        <SearchBox />
-
+        <div className={styles.search}>
+          <SearchBox />
+        </div>
         <div className={styles.container}>
           <div className={styles.text}>
             <Titles

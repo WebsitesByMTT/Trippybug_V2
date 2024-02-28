@@ -15,9 +15,20 @@
     transition: transform 0.2s ease-in-out;
     overflow: hidden;
 
+    // &::before {
+    //   position: absolute;
+    //   content: "";
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: rgba(0, 0, 0, 0.288);
+    //   z-index: 1;
+    // }
+
     &.fade {
       .bg {
-        transform: scale(1);
+        opacity: 0.5;
       }
       /* Change opacity to 1 to trigger the fade-in effect */
     }
@@ -88,6 +99,11 @@
               font-style: normal;
               font-weight: 800;
               line-height: normal;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+
+              span {
+                color: #ef8500;
+              }
 
               @include media.for-greater-than-medium {
                 font-size: 6.734rem;
@@ -101,6 +117,7 @@
               font-style: normal;
               font-weight: 500;
               line-height: normal;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 
               display: none;
 

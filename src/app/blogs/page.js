@@ -11,6 +11,8 @@ import {
   getPostsByCategoryName,
 } from "../lib/data";
 import Link from "next/link";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -91,7 +93,9 @@ const Blogs = async ({ searchParams, preview = false }) => {
       </div>
       <div className={styles.blogs}>
         <div className={styles.container}>
-          <CategoriesGrid posts={postsData} />
+          <Suspense fallback={<Loading />}>
+            <CategoriesGrid posts={postsData} />
+          </Suspense>
         </div>
       </div>
       <Footer />

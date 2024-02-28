@@ -6,6 +6,35 @@ import Footer from "@/components/footer/Footer";
 import Categories from "@/components/categories/Categories";
 import { getCategories, getPostBySlug, getRecentPosts } from "../lib/data";
 import Link from "next/link";
+import Script from "next/script";
+
+export const generateMetadata = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
+  const { post: postData } = await getPostBySlug(
+    params.slug,
+    preview,
+    previewData
+  );
+
+  return {
+    title: postData?.title,
+    description: postData?.seo?.metaDesc,
+    keywords: postData?.seo?.metaKeywords,
+    openGraph: {
+      title: postData?.title,
+      description: postData?.seo?.opengraphDescription,
+      url: `/${params.slug}`,
+      type: "article",
+      images: postData?.seo?.opengraphImage?.sourceUrl,
+    },
+    alternates: {
+      canonical: postData?.seo?.canonical,
+    },
+  };
+};
 
 function calculateTimeAgo(timestamp) {
   const currentDate = new Date();
@@ -35,11 +64,42 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
     preview,
     previewData
   );
+
   const { edges: categories } = await getCategories(preview);
   const { edges: recentPosts } = await getRecentPosts(3);
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.trippybug.com/${params.slug}`,
+    },
+    headline: postData?.title,
+    description: postData?.seo?.metaDesc,
+    image: postData?.seo?.opengraphImage?.sourceUrl,
+    author: {
+      "@type": "Organization",
+      name: "TrippyBug",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: postData?.author?.node?.name,
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.trippybug.com/_next/image?url=%2Fassets%2Fimages%2FnewLogo.png&w=3840&q=75",
+      },
+    },
+    datePublished: postData?.date,
+  };
+
   return (
     <>
+      <Script
+        id="blog-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Navbar />
       <div className={styles.categories}>
         <Categories data={categories} />
@@ -121,7 +181,6 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
                 </div>
               </header>
               <main>
-              
                 <div className={styles[`blog-banner`]}>
                   <Image
                     src={postData?.featuredImage?.node?.sourceUrl}
