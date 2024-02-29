@@ -1,11 +1,9 @@
 "use client";
-import { Suspense, useState } from "react";
 import styles from "./searchBox.module.scss";
-import KiwiForm from "../kiwiForm/KiwiForm";
-import Loading from "@/app/loading";
+import { useState } from "react";
 
 const SearchBox = () => {
-  const [activeTab, setActiveTab] = useState("Flights"); // Assuming 'Flights' is the default active tab
+  const [activeTab, setActiveTab] = useState("Flights");
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -44,7 +42,7 @@ const SearchBox = () => {
             src="//www.travelpayouts.com/widgets/22205c47ab682a18e67bf3138082cce3.html?v=2203"
             scrolling="no"
             frameBorder="0"
-            allowFullScreen="true"
+            allowFullScreen={true}
             className={styles.flights}
             title="Flights"
           ></iframe>

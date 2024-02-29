@@ -32,7 +32,8 @@ const ExploreNowSlider = ({ data, setPreviousPost }) => {
         },
       },
     ],
-    beforeChange: (current, next) => setPreviousPost(data[current]),
+    beforeChange: (current, next) =>
+      setPreviousPost({ post: data[current], count: current + 1 }),
   };
 
   const previousSlide = () => {

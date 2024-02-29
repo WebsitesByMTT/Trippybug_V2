@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import Link from "next/link";
 
-const Categories = ({ data }) => {
+const Categories = ({ data, searchParams }) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -50,7 +50,11 @@ const Categories = ({ data }) => {
   return (
     <Slider {...carouselSettings} ref={sliderRef} className={styles.list}>
       <Link href={`/blogs?category=all`} className={styles.link}>
-        <div className={styles[`image-container`]}>
+        <div
+          className={`${styles["image-container"]} ${
+            searchParams.category == "all" ? styles.active : ""
+          }`}
+        >
           <Image src={"/all.png"} fill alt={"all"} className={styles.image} />
         </div>
         <h6>All</h6>
@@ -63,7 +67,11 @@ const Categories = ({ data }) => {
               className={styles.link}
               key={item.node?.id}
             >
-              <div className={styles[`image-container`]}>
+              <div
+                className={`${styles["image-container"]} ${
+                  searchParams.category == item?.node?.name ? styles.active : ""
+                }`}
+              >
                 <Image
                   src={
                     item.node?.posts?.edges[0]?.node?.featuredImage?.node

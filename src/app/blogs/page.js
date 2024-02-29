@@ -11,8 +11,6 @@ import {
   getPostsByCategoryName,
 } from "../lib/data";
 import Link from "next/link";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -52,11 +50,15 @@ const Blogs = async ({ searchParams, preview = false }) => {
       <Navbar />
       <div className={styles.categories}>
         <div className={styles.smaller}>
-          <Categories data={categories} />
+          <Categories data={categories} searchParams={searchParams} />
         </div>
         <div className={styles.larger}>
           <Link href={`/blogs?category=all`} className={styles.link}>
-            <div className={styles[`image-container`]}>
+            <div
+              className={`${styles["image-container"]} ${
+                searchParams.category == "all" ? styles.active : ""
+              }`}
+            >
               <Image
                 src={"/all.png"}
                 fill
@@ -72,9 +74,15 @@ const Blogs = async ({ searchParams, preview = false }) => {
                 <Link
                   href={`/blogs?category=${item.node?.name}`}
                   key={item.node?.id}
-                  className={styles.link}
+                  className={`${styles.link}`}
                 >
-                  <div className={styles[`image-container`]}>
+                  <div
+                    className={`${styles["image-container"]} ${
+                      searchParams.category == item?.node?.name
+                        ? styles.active
+                        : ""
+                    }`}
+                  >
                     <Image
                       src={
                         item.node?.posts?.edges[0]?.node?.featuredImage?.node
@@ -93,9 +101,7 @@ const Blogs = async ({ searchParams, preview = false }) => {
       </div>
       <div className={styles.blogs}>
         <div className={styles.container}>
-          <Suspense fallback={<Loading />}>
-            <CategoriesGrid posts={postsData} />
-          </Suspense>
+          <CategoriesGrid posts={postsData} />
         </div>
       </div>
       <Footer />

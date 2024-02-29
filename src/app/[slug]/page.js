@@ -58,7 +58,12 @@ function calculateTimeAgo(timestamp) {
   }
 }
 
-const SingleBlog = async ({ params, preview = false, previewData }) => {
+const SingleBlog = async ({
+  params,
+  preview = false,
+  previewData,
+  searchParams,
+}) => {
   const { post: postData } = await getPostBySlug(
     params.slug,
     preview,
@@ -102,7 +107,7 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
       />
       <Navbar />
       <div className={styles.categories}>
-        <Categories data={categories} />
+        <Categories data={categories} searchParams={searchParams} />
       </div>
       <section className={styles[`single-blog`]}>
         <div className={styles.container}>
@@ -199,22 +204,40 @@ const SingleBlog = async ({ params, preview = false, previewData }) => {
             </div>
             <aside className={styles.sidebar}>
               <ul>
-                {categories.map((item, index) => (
-                  <li key={item.id}>
-                    <div className={styles[`image-container`]}>
-                      <Image
-                        src={
-                          item.node?.posts?.edges[0]?.node?.featuredImage?.node
-                            ?.sourceUrl
-                        }
-                        alt={item.node?.name}
-                        fill
-                        className={styles.image}
-                      />
-                    </div>
-                    <h6>{item.node?.name}</h6>
-                  </li>
-                ))}
+                <Link href={`/blogs?category=all`} className={styles.link}>
+                  <div className={styles[`image-container`]}>
+                    <Image
+                      src={"/all.png"}
+                      fill
+                      alt={"all"}
+                      className={styles.image}
+                    />
+                  </div>
+                  <h6>All</h6>
+                </Link>
+                {categories.map(
+                  (item, index) =>
+                    item?.node?.name != "Gallery" && (
+                      <Link
+                        href={`/blogs?category=${item.node?.name}`}
+                        key={item.id}
+                        className={styles.link}
+                      >
+                        <div className={styles[`image-container`]}>
+                          <Image
+                            src={
+                              item.node?.posts?.edges[0]?.node?.featuredImage
+                                ?.node?.sourceUrl
+                            }
+                            alt={item.node?.name}
+                            fill
+                            className={styles.image}
+                          />
+                        </div>
+                        <h6>{item.node?.name}</h6>
+                      </Link>
+                    )
+                )}
               </ul>
             </aside>
           </div>

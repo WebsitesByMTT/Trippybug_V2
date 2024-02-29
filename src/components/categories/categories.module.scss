@@ -1,3 +1,6 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
 .list {
   .link {
     display: flex !important;
@@ -9,14 +12,26 @@
     .image-container {
       width: 7vh;
       height: 7vh;
-
       border-radius: 50%;
       position: relative;
+      border: 0.2rem solid transparent;
+      transition: border 0.2s ease-in-out;
+
+      @include media.for-greater-than-medium {
+        border: 0.4rem solid transparent;
+      }
 
       .image {
         border-radius: 50%;
         width: 100%;
         height: 100%;
+      }
+    }
+    .active {
+      border: 0.2rem solid #ef8500;
+
+      @include media.for-greater-than-medium {
+        border: 0.4rem solid #ef8500;
       }
     }
 

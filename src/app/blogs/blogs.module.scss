@@ -29,12 +29,18 @@
         height: 8vw;
         border-radius: 50%;
         position: relative;
+        border: 5px solid transparent;
+        transition: border 0.2s ease-in-out;
 
         .image {
           border-radius: 50%;
           width: 100%;
           height: 100%;
         }
+      }
+
+      .active {
+        border: 0.5rem solid #ef8500;
       }
 
       h6 {

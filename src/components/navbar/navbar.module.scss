@@ -13,8 +13,12 @@
     align-items: center;
     justify-content: space-between;
     color: #0f5a83;
-    width: 95%;
+    width: 90%;
     padding: 1.9rem 0rem;
+
+    @include media.for-greater-than-large {
+      padding: 0;
+    }
 
     .logo {
       position: relative;
@@ -24,6 +28,9 @@
       @include media.for-greater-than-medium {
         width: 24.4rem;
         height: 10.9573rem;
+
+        width: 20.2633rem;
+        height: 9.0996rem;
       }
 
       img {
@@ -47,6 +54,11 @@
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: #ef8500;
+          }
         }
       }
 
@@ -59,8 +71,9 @@
         transform: translate(-50%, -50%);
         border-radius: 12px;
         background: rgba(255, 153, 26, 0.95);
+        transition: all 0.2s ease-in-out;
 
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         gap: 0;
@@ -93,6 +106,10 @@
           }
         }
       }
+    }
+
+    .notOnHero {
+      display: flex;
     }
   }
 }

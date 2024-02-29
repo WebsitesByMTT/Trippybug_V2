@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const ExploreNowContent = ({ exploreNowData }) => {
-  const [previousPost, setPreviousPost] = useState(null);
+  const [previousPost, setPreviousPost] = useState({ post: null, count: 0 });
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const ExploreNowContent = ({ exploreNowData }) => {
         <div className={styles[`image-container`]}>
           <Image
             src={
-              previousPost?.node?.featuredImage?.node?.sourceUrl ||
+              previousPost.post?.node?.featuredImage?.node?.sourceUrl ||
               "/exploreNow/1.png"
             }
             className={`${styles.image} ${imageLoaded && styles.loaded}`}
@@ -37,11 +37,11 @@ const ExploreNowContent = ({ exploreNowData }) => {
         <div className={styles.detail}>
           <div className={styles.location}>
             <LocationMarker />
-            <p>{previousPost?.node?.title}</p>
+            <p>{previousPost.post?.node?.title}</p>
           </div>
 
           <div className={styles.count}>
-            <h5>01</h5>
+            <h5>0{previousPost.count}</h5>
           </div>
         </div>
 

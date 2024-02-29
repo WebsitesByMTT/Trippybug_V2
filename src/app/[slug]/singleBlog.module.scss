@@ -168,10 +168,14 @@
 
           .blog-banner {
             width: 100%;
-            padding-top: 50%;
+            padding-top: 100%;
             position: relative;
             border-radius: 3rem;
             overflow: hidden;
+
+            @include media.for-greater-than-medium {
+              padding-top: 50%;
+            }
 
             .image {
               width: 100%;
@@ -319,7 +323,7 @@
           justify-content: center;
           gap: 4rem;
 
-          li {
+          .link {
             display: flex;
             align-items: center;
             justify-content: center;

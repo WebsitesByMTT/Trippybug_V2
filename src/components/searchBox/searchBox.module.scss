@@ -6,9 +6,9 @@
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.35);
   background: rgba(167, 167, 167, 0.35);
-  padding: 1.4rem 1.1rem;
+  padding: 1rem;
   align-self: center;
-  border: 0.5rem;
+  border-radius: 0.5rem;
 
   .tabs {
     display: flex;
@@ -69,7 +69,7 @@
       }
 
       @include media.for-greater-than-large {
-        height: 12rem;
+        height: 10rem;
       }
     }
 

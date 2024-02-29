@@ -28,6 +28,7 @@ const Footer = () => {
       )}
       {submitted && <ThankYou />}
       <div className={styles.footer}>
+        <div className={styles.border}></div>
         <div className={styles.container}>
           <div className={styles.top}>
             <div className={styles.left}>
