@@ -7,17 +7,24 @@ import Categories from "@/components/categories/Categories";
 import { getCategories, getPostBySlug, getRecentPosts } from "../lib/data";
 import Link from "next/link";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
 export const generateMetadata = async ({
   params,
   preview = false,
   previewData,
 }) => {
-  const { post: postData } = await getPostBySlug(
-    params.slug,
-    preview,
-    previewData
-  );
+  let postData;
+  try {
+    const { post } = await getPostBySlug(params.slug, preview, previewData);
+    postData = post;
+
+    if (postData === null) {
+      notFound();
+    }
+  } catch (error) {
+    notFound();
+  }
 
   return {
     title: postData?.title,
@@ -64,11 +71,17 @@ const SingleBlog = async ({
   previewData,
   searchParams,
 }) => {
-  const { post: postData } = await getPostBySlug(
-    params.slug,
-    preview,
-    previewData
-  );
+  let postData;
+  try {
+    const { post } = await getPostBySlug(params.slug, preview, previewData);
+    postData = post;
+
+    if (postData === null) {
+      notFound();
+    }
+  } catch (error) {
+    notFound();
+  }
 
   const { edges: categories } = await getCategories(preview);
   const { edges: recentPosts } = await getRecentPosts(3);

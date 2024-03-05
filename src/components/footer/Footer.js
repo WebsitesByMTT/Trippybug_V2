@@ -6,7 +6,7 @@ import Contact from "../contact/Contact";
 import { useState } from "react";
 import ThankYou from "../thankYou/ThankYou";
 
-const Footer = () => {
+const Footer = ({ color }) => {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -28,7 +28,10 @@ const Footer = () => {
       )}
       {submitted && <ThankYou />}
       <div className={styles.footer}>
-        <div className={styles.border}></div>
+        <div
+          className={styles.border}
+          style={{ background: color ? color : "#fff" }}
+        ></div>
         <div className={styles.container}>
           <div className={styles.top}>
             <div className={styles.left}>
