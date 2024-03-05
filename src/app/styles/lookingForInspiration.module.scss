@@ -1,0 +1,101 @@
+@use "/src/app/variables.scss" as *;
+@use "/src/app/mediaqueries.scss" as media;
+
+.lookingForInspiration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  height: auto;
+
+  @include media.for-greater-than-medium {
+    margin: 10.4vh 0rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 3rem;
+
+    @include media.for-greater-than-medium {
+      gap: 5rem;
+    }
+
+    .content {
+      width: 100%;
+
+      .cards {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+
+        @include media.for-greater-than-medium() {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media.for-greater-than-large() {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          // padding: 1rem;
+          .image-container {
+            width: 100%;
+            padding-top: 70%;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+
+            .image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .detail {
+            &-titles {
+              h6 {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+
+                color: #000;
+                font-size: 1.3rem;
+                font-style: normal;
+                font-weight: 800;
+                letter-spacing: 0.065rem;
+                transition: color 0.2s ease-in-out;
+
+                @include media.for-greater-than-medium {
+                  font-size: 1.8rem;
+                  font-weight: 500;
+                  letter-spacing: 0.09rem;
+                }
+              }
+
+              p {
+                color: #757474;
+                font-size: 1.3rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 0.065rem;
+
+                @include media.for-greater-than-medium {
+                  font-size: 1.6rem;
+                  letter-spacing: 0.08rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

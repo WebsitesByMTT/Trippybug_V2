@@ -20,7 +20,7 @@
     text-transform: capitalize;
 
     @include media.for-greater-than-medium {
-      font-size: 8rem;
+      font-size: 7rem;
       letter-spacing: 0.1895rem;
       text-align: center;
     }

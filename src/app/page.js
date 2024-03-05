@@ -9,6 +9,7 @@ import Footer from "@/components/footer/Footer";
 import Hero from "@/components/hero/Hero";
 import ExploreNow from "@/components/exploreNowContent/ExploreNowContent";
 import ExploreNowContent from "@/components/exploreNowContent/ExploreNowContent";
+import Link from "next/link";
 
 const topDestinationData = [
   {
@@ -39,6 +40,11 @@ const Home = async () => {
     "explore-the-world"
   );
   const { edges: trendingNowData } = await getPostsByCategoryName("trending");
+
+  const { edges: lookingForInspiration } = await getPostsByCategoryName(
+    "looking-for-inspiration",
+    3
+  );
 
   return (
     <>
@@ -125,6 +131,52 @@ const Home = async () => {
                       </div>
                     </div>
                   </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Looking for inspiration */}
+      <section className={styles.lookingForInspiration}>
+        <div className={styles.container}>
+          <Titles
+            title="looking for inspiration"
+            subtitle="Not Sure Where To Start?"
+            desc="See where others are travelling and follow their trails."
+          />
+
+          <div className={styles.content}>
+            <div className={styles.cards}>
+              {lookingForInspiration.map((e) => {
+                return (
+                  <Link
+                    href={`/${e?.node?.slug}`}
+                    className={styles.card}
+                    key={e?.id}
+                  >
+                    <div className={styles[`image-container`]}>
+                      <Image
+                        src={e?.node?.featuredImage?.node?.sourceUrl}
+                        alt={e?.node?.title}
+                        fill
+                        className={styles.image}
+                      />
+                    </div>
+
+                    <div className={styles.detail}>
+                      <div className={styles[`detail-titles`]}>
+                        <h6>{e?.node?.title}</h6>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: e?.node?.excerpt,
+                          }}
+                          className={styles.desc}
+                        />
+                      </div>
+                    </div>
+                  </Link>
                 );
               })}
             </div>

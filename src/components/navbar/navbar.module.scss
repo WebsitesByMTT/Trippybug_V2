@@ -2,22 +2,30 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .navbar {
-  z-index: 999999;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #0f5a83;
-    width: 90%;
+    width: 92%;
     padding: 1.9rem 0rem;
 
     @include media.for-greater-than-large {
       padding: 0;
+    }
+
+    .menu {
+      display: block;
+      cursor: pointer;
+
+      @include media.for-greater-than-medium {
+        display: none;
+      }
     }
 
     .logo {
@@ -110,6 +118,111 @@
 
     .notOnHero {
       display: flex;
+    }
+  }
+
+  .mobile {
+    width: 100%;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    display: flex;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-in-out;
+
+    &.show {
+      transform: translateX(0);
+      background: #00000046;
+      backdrop-filter: blur(2px);
+      transition: all 0.2s ease-in-out;
+    }
+
+    @include media.for-greater-than-medium {
+      display: none;
+    }
+
+    &-container {
+      height: 100%;
+      min-width: 70%;
+      background-color: white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .image-container {
+          position: relative;
+          width: 16.8rem;
+          height: 7.5rem;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        .close {
+          margin-right: 1rem;
+          cursor: pointer;
+        }
+      }
+
+      .items {
+        padding: 0rem 1.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .title {
+          color: #ff991a;
+          font-size: 1.6rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.1rem;
+          text-transform: capitalize;
+        }
+        .links {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          a {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+
+            .icon {
+              svg {
+                width: 2.5rem;
+                height: 2.5rem;
+              }
+            }
+
+            span {
+              color: #343330;
+              font-size: 1.6rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              letter-spacing: 0.105rem;
+              text-transform: capitalize;
+            }
+          }
+        }
+      }
+    }
+
+    .closing-area {
+      flex: 1;
     }
   }
 }

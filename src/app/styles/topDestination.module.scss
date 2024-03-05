@@ -8,7 +8,7 @@
   margin-top: 3rem;
 
   @include media.for-greater-than-medium {
-    margin: 10rem 0rem;
+    margin: 20.5vh 0rem;
   }
 
   .container {
@@ -46,6 +46,7 @@
           border: 1px solid rgba(0, 0, 0, 0.35);
           overflow: hidden;
           padding: 0.4rem;
+          cursor: pointer;
 
           .image-container {
             width: 14vh;

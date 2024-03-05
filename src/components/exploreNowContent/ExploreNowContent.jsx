@@ -28,20 +28,19 @@ const ExploreNowContent = ({ exploreNowData }) => {
               previousPost.post?.node?.featuredImage?.node?.sourceUrl ||
               "/exploreNow/1.png"
             }
+            fill
             className={`${styles.image} ${imageLoaded && styles.loaded}`}
             alt="explore-now-image"
-            width={1000}
-            height={1000}
           />
         </div>
         <div className={styles.detail}>
           <div className={styles.location}>
-            <LocationMarker />
+            {previousPost.count > 0 && <LocationMarker />}
             <p>{previousPost.post?.node?.title}</p>
           </div>
 
           <div className={styles.count}>
-            <h5>0{previousPost.count}</h5>
+            <h5>{previousPost.count > 0 && 0}{previousPost.count}</h5>
           </div>
         </div>
 
