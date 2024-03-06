@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./exploreNowSlider.module.scss";
 
-const ExploreNowSlider = ({ data }) => {
+const ExploreNowSlider = ({ data, setPreviousPost }) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -26,12 +26,22 @@ const ExploreNowSlider = ({ data }) => {
     draggable: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
+    beforeChange: (current, next) =>
+      setPreviousPost({ post: data[current], count: current + 1 }),
+  };
+
+  const previousSlide = () => {
+    sliderRef?.current.slickPrev();
+  };
+
+  const nextSlide = () => {
+    sliderRef?.current?.slickNext();
   };
 
   return (

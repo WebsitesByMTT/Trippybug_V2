@@ -2,38 +2,82 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .footer {
-  padding: 2vw 4vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #0f5a83;
+  flex-direction: column;
+
+  @include media.for-greater-than-medium {
+    // padding: 5rem 0rem;
+  }
+
+  .border {
+    padding: 2rem;
+    width: 100%;
+    border-radius: 0rem 0rem 5rem 5rem;
+    background: #fff;
+  }
 
   .container {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 4vh;
+    gap: 3rem;
+    padding: 3rem 0rem;
+
+    @include media.for-greater-than-medium {
+      gap: 5rem;
+      padding: 5rem 0rem;
+    }
 
     .top {
       display: flex;
       flex-wrap: wrap;
-      gap: 4vw;
+      gap: 2rem;
+
+      @include media.for-greater-than-medium {
+        gap: 5rem;
+      }
 
       .left {
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
 
         @include media.for-greater-than-medium {
           align-items: flex-start;
         }
 
-        p {
-          font-size: 1.2vh;
-          text-align: center;
+        .image-container {
+          position: relative;
+          width: 14.9rem;
+          height: 8.9rem;
+          // padding: 1rem 0rem;
 
           @include media.for-greater-than-medium {
-            font-size: 1.2vw;
+            width: 24.4rem;
+            height: 10.9573rem;
+          }
+
+          .image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        p {
+          color: #fff;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: left;
+
+          @include media.for-greater-than-medium {
+            font-size: 2rem;
             text-align: left;
           }
         }
@@ -41,31 +85,53 @@
 
       .right {
         flex: 1.5;
-
         display: flex;
         justify-content: space-between;
-        gap: 1vw;
+        // gap: 4rem;
+
+        gap: 4rem;
 
         ul {
           display: flex;
           flex-direction: column;
-          gap: 1vh;
+          gap: 0.3rem;
+
           li {
-            font-size: 1.2vh;
+            color: #fff;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 0.05rem;
 
             @include media.for-greater-than-medium {
-              font-size: 1.2vw;
+              font-size: 2.0939rem;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              letter-spacing: 0.1047rem;
             }
           }
+
           & > :nth-child(1) {
-            font-size: 2vh;
-            color: map-get($colors, secondary);
-            margin-bottom: 2vh;
+            color: #ff991a;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
             text-transform: uppercase;
+            margin-bottom: 3rem;
+
+            font-size: 13px;
+            letter-spacing: 0.117rem;
 
             @include media.for-greater-than-medium {
-              font-size: 2vw;
+              font-size: 2.7914rem;
+              letter-spacing: 0.2512rem;
             }
+          }
+
+          li:not(:nth-child(1)) {
+            cursor: pointer;
           }
         }
       }
@@ -81,16 +147,34 @@
         align-items: center;
         justify-content: center;
         gap: 5rem;
+
+        li {
+          a {
+            img {
+              filter: brightness(0) invert(1);
+            }
+          }
+        }
       }
     }
 
     .last {
+      color: #fff;
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.1891rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
-      margin-bottom: 2rem;
+      letter-spacing: 0.0595rem;
+
+      @include media.only-for-smaller {
+        margin-bottom: 6rem;
+      }
+
+      @include media.for-greater-than-medium {
+        font-size: 2rem;
+        letter-spacing: 0.15rem;
+      }
     }
   }
 }

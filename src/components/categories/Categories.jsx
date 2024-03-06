@@ -5,8 +5,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
+import Link from "next/link";
+import { searchImages } from "@/app/lib/searchImages";
 
-const Categories = ({ data }) => {
+const Categories = ({ data, searchParams }) => {
   const sliderRef = useRef(null);
 
   const carouselSettings = {
@@ -46,23 +48,43 @@ const Categories = ({ data }) => {
   const nextSlide = () => {
     sliderRef?.current?.slickNext();
   };
+
   return (
     <Slider {...carouselSettings} ref={sliderRef} className={styles.list}>
-      {data.map((item, index) => (
-        <li key={item.node?.id}>
-          <div className={styles[`image-container`]}>
-            <Image
-              src={
-                item.node?.posts?.edges[0]?.node?.featuredImage?.node?.sourceUrl
-              }
-              fill
-              alt={item.node?.name}
-              className={styles.image}
-            />
-          </div>
-          <h6>{item.node?.name}</h6>
-        </li>
-      ))}
+      <Link href={`/blogs?category=all`} className={styles.link}>
+        <div
+          className={`${styles["image-container"]} ${
+            searchParams.category == "all" ? styles.active : ""
+          }`}
+        >
+          <Image src={"/all.png"} fill alt={"all"} className={styles.image} />
+        </div>
+        <h6>All</h6>
+      </Link>
+      {data.map(
+        (item, index) =>
+          item?.node?.name != "Gallery" && (
+            <Link
+              href={`/blogs?category=${item.node?.name}`}
+              className={styles.link}
+              key={item.node?.id}
+            >
+              <div
+                className={`${styles["image-container"]} ${
+                  searchParams.category == item?.node?.name ? styles.active : ""
+                }`}
+              >
+                <Image
+                  src={searchImages(item?.node?.name)}
+                  fill
+                  alt={item.node?.name}
+                  className={styles.image}
+                />
+              </div>
+              <h6>{item.node?.name}</h6>
+            </Link>
+          )
+      )}
     </Slider>
   );
 };

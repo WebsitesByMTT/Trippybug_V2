@@ -16,19 +16,10 @@ a {
 html {
   font-size: 62.5%;
   /* 10px */
-  font-size: 62.5%;
-  /* 10px */
 }
 
 body {
-  background: linear-gradient(
-    270deg,
-    #fdf2d6 0%,
-    #fff2d7 12.55%,
-    #fae6cd 33.53%,
-    #f1e8de 55.89%,
-    #d8dcdd 100%
-  );
+  background: white;
 }
 
 .slick-arrow.slick-next::before,
@@ -46,52 +37,13 @@ body {
   }
 }
 
-/* Font size for screens that are 768px wide or less */
-@media screen and (max-width: 768px) {
-  html {
-    font-size: 50%;
-    /* 8px */
-    font-size: 50%;
-    /* 8px */
-  }
+.web-stories-list {
+  border: 1px solid red;
+  padding: 1rem;
+  display: none;
 }
 
-/* Font size for screens that are 480px wide or less */
-@media screen and (max-width: 480px) {
-  html {
-    font-size: 50%;
-    /* 6.4px */
-  }
-}
 
-@media screen and (max-width: 370px) {
-  html {
-    font-size: 45%;
-  }
-}
-
-@media screen and (max-width: 330px) {
-  html {
-    font-size: 40%;
-  }
-}
-
-/* Font size for screens that are 480px wide or less */
-@media screen and (max-width: 480px) {
-  html {
-    font-size: 50%;
-    /* 6.4px */
-  }
-}
-
-@media screen and (max-width: 370px) {
-  html {
-    font-size: 45%;
-  }
-}
-
-@media screen and (max-width: 330px) {
-  html {
-    font-size: 40%;
-  }
+.sitemap ul li a {
+  font-size: 1.4rem;
 }

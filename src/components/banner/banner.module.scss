@@ -34,7 +34,7 @@
   }
 
   .content {
-    height: 30vh;
+    height: 50vh;
     padding: 4rem;
     display: flex;
     align-items: center;
@@ -67,23 +67,31 @@
         }
 
         h1 {
-          font-size: map-get($sizes, h1);
+          color: #fff;
+          font-size: 4rem;
+          font-style: normal;
+          font-weight: 800;
+          line-height: normal;
+          letter-spacing: 0.24rem;
+          text-transform: capitalize;
           text-align: center;
 
           @include media.for-greater-than-medium() {
             text-align: left;
-            width: 100%;
-            font-size: 7rem;
+            font-size: 6.734rem;
+            letter-spacing: 0.404rem;
           }
         }
 
         p {
           font-size: map-get($sizes, p);
           text-align: center;
+          display: none;
 
           @include media.for-greater-than-medium() {
             text-align: left;
             width: 100%;
+            display: block;
           }
         }
       }

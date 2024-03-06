@@ -2,24 +2,36 @@
 @use "/src/app/mediaqueries.scss" as media;
 
 .trending-now {
-  padding: 8rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+  overflow: hidden;
 
   @include media.for-greater-than-medium {
-    padding: 8rem 6rem;
-  }
-
-  @include media.for-greater-than-large {
-    padding: 8rem;
+    margin: 10.4vh 0rem;
   }
 
   .container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 8rem;
+    align-items: center;
+    justify-content: center;
     height: 100%;
+    gap: 3rem;
+
+    @include media.for-greater-than-medium {
+      width: 90%;
+      gap: 5rem;
+    }
+
+    .text {
+      width: 90%;
+    }
 
     .content {
-      // border: 1px solid red;
+      width: 100%;
     }
   }
 }

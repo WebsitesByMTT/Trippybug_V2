@@ -17,7 +17,7 @@ const TrendingNowSlider = ({ data }) => {
     autoplaySpeed: 3000,
     speed: 1000,
     dots: false,
-    arrows: true,
+    arrows: false,
     centermode: true,
     infinite: true,
     lazyLoad: "ondemand",
@@ -41,7 +41,7 @@ const TrendingNowSlider = ({ data }) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -71,11 +71,13 @@ const TrendingNowSlider = ({ data }) => {
                 </div>
 
                 <div className={styles.detail}>
-                  <h4>{post?.node?.title}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }}
-                    className={styles.desc}
-                  />
+                  <Link href={post?.node?.slug} className={styles.slug}>
+                    <h4>{post?.node?.title}</h4>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: post?.node?.excerpt }}
+                      className={styles.desc}
+                    />
+                  </Link>
                   <Link href={post?.node?.slug} className={styles.more}>
                     <svg
                       viewBox="0 0 39 39"

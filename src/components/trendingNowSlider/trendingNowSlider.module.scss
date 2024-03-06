@@ -5,6 +5,7 @@
   flex: 0 0 100%;
   scroll-snap-align: start;
   flex-basis: calc(100% - 1rem);
+  cursor: pointer;
 
   overflow: hidden;
   padding: 0rem 1rem;
@@ -19,6 +20,24 @@
 
   @include media.for-greater-than-large {
     flex-basis: calc(25% - 2rem);
+  }
+
+  &:hover {
+    .inner-container {
+      .detail {
+        .slug {
+          h4 {
+            color: #ef8500;
+          }
+        }
+      }
+
+      .image-container {
+        .image {
+          transform: scale(1.1);
+        }
+      }
+    }
   }
 
   &-container {
@@ -36,8 +55,7 @@
 
     .image-container {
       position: relative;
-      height: 40rem;
-      max-height: 40rem;
+      padding-top: 120%;
 
       border-radius: 1.6rem;
       overflow: hidden;
@@ -46,6 +64,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.2s ease-in-out;
       }
     }
 
@@ -56,12 +75,23 @@
       gap: 1rem;
 
       h4 {
-        font-size: 1.8rem;
-        font-weight: 500;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         overflow: hidden;
+
+        color: #000;
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 800;
+        letter-spacing: 0.065rem;
+        transition: color 0.2s ease-in-out;
+
+        @include media.for-greater-than-medium {
+          font-size: 1.8rem;
+          font-weight: 500;
+          letter-spacing: 0.09rem;
+        }
       }
 
       .desc {
@@ -71,8 +101,17 @@
         overflow: hidden;
 
         p {
-          font-size: 1.6rem;
           color: #757474;
+          font-size: 1.3rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.065rem;
+
+          @include media.for-greater-than-medium {
+            font-size: 1.6rem;
+            letter-spacing: 0.08rem;
+          }
         }
       }
 
@@ -83,9 +122,14 @@
         align-items: center;
         justify-content: flex-end;
 
-        svg{
-          width: 3.9rem;
-          height: 3.9rem;
+        svg {
+          width: 2.0005rem;
+          height: 2.0005rem;
+
+          @include media.for-greater-than-medium {
+            width: 3.9rem;
+            height: 3.9rem;
+          }
         }
       }
     }

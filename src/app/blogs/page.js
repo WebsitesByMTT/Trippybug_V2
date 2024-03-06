@@ -1,82 +1,105 @@
+"use server";
 import Navbar from "@/components/navbar/Navbar";
 import styles from "./blogs.module.scss";
 import Categories from "@/components/categories/Categories";
 import Image from "next/image";
 import CategoriesGrid from "@/components/categoriesGrid/CategoriesGrid";
 import Footer from "@/components/footer/Footer";
-import { getCategories } from "../lib/data";
+import {
+  getAllPosts,
+  getCategories,
+  getPostsByCategoryName,
+} from "../lib/data";
+import Link from "next/link";
+import { searchImages } from "../lib/searchImages";
 
-const Blogs = async (params, preview = false, previewData) => {
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+const Blogs = async ({ searchParams, preview = false }) => {
+  let postsData;
+
+  if (isEmpty(searchParams) || searchParams.category === "all") {
+    const { edges: posts } = await getAllPosts();
+    const { edges: nextPosts } = await getAllPosts(
+      false,
+      posts?.pageInfo?.endCursor
+    );
+    postsData = [...posts, ...nextPosts];
+  } else {
+    let searchFor = searchParams.category.toLowerCase();
+
+    if (searchFor === "airlines") {
+      searchFor = "best airlines";
+    } else if (searchFor === "cars") {
+      searchFor = "cars rental";
+    }
+    // Remove existing hyphens
+    searchFor = searchFor.replace(/-/g, "");
+    // Replace spaces with hyphens
+    searchFor = searchFor.replace(/\s+/g, "-");
+
+    const { edges: posts } = await getPostsByCategoryName(searchFor, 12);
+    postsData = posts;
+  }
+
   const { edges: categories } = await getCategories(preview);
+
   return (
     <>
       <Navbar />
       <div className={styles.categories}>
         <div className={styles.smaller}>
-          <Categories data={categories} />
+          <Categories data={categories} searchParams={searchParams} />
         </div>
-        <ul className={styles.larger}>
-          {categories.map((item, index) => (
-            <li key={item.node?.id}>
-              <div className={styles[`image-container`]}>
-                <Image
-                  src={
-                    item.node?.posts?.edges[0]?.node?.featuredImage?.node
-                      ?.sourceUrl
-                  }
-                  fill
-                  alt={item.node?.name}
-                  className={styles.image}
-                />
-              </div>
-              <h6>{item.node?.name}</h6>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.larger}>
+          <Link href={`/blogs?category=all`} className={styles.link}>
+            <div
+              className={`${styles["image-container"]} ${
+                searchParams.category == "all" ? styles.active : ""
+              }`}
+            >
+              <Image
+                src={"/all.png"}
+                fill
+                alt={"all"}
+                className={styles.image}
+              />
+            </div>
+            <h6>All</h6>
+          </Link>
+          {categories.map(
+            (item, index) =>
+              item.node?.name != "Gallery" && (
+                <Link
+                  href={`/blogs?category=${item.node?.name}`}
+                  key={item.node?.id}
+                  className={`${styles.link}`}
+                >
+                  <div
+                    className={`${styles["image-container"]} ${
+                      searchParams.category == item?.node?.name
+                        ? styles.active
+                        : ""
+                    }`}
+                  >
+                    <Image
+                      src={searchImages(item?.node?.name)}
+                      fill
+                      alt={item.node?.name}
+                      className={styles.image}
+                    />
+                  </div>
+                  <h6>{item.node?.name}</h6>
+                </Link>
+              )
+          )}
+        </div>
       </div>
       <div className={styles.blogs}>
         <div className={styles.container}>
-          <CategoriesGrid />
-          <div className={styles.actions}>
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="11"
-                viewBox="0 0 20 11"
-                fill="none"
-              >
-                <path
-                  d="M5 1.5L1 5.5M1 5.5L5 9.5M1 5.5H19"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <span>Previous</span>
-            </button>
-
-            <button>
-              <span>Next Page</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="21"
-                height="11"
-                viewBox="0 0 21 11"
-                fill="none"
-              >
-                <path
-                  d="M15.8453 1.5L19.8453 5.5M19.8453 5.5L15.8453 9.5M19.8453 5.5H1.84534"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
+          <CategoriesGrid posts={postsData} />
         </div>
       </div>
       <Footer />

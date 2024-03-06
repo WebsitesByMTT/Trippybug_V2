@@ -3,7 +3,7 @@ $medium: 768px;
 $large: 1024px;
 
 @mixin only-for-smaller {
-  @media (max-width: $smaller) {
+  @media (max-width: $medium) {
     @content;
   }
 }
