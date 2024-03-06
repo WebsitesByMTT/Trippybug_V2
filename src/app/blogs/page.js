@@ -11,6 +11,7 @@ import {
   getPostsByCategoryName,
 } from "../lib/data";
 import Link from "next/link";
+import { searchImages } from "../lib/searchImages";
 
 function isEmpty(obj) {
   return Object.keys(obj).length === 0;
@@ -84,10 +85,7 @@ const Blogs = async ({ searchParams, preview = false }) => {
                     }`}
                   >
                     <Image
-                      src={
-                        item.node?.posts?.edges[0]?.node?.featuredImage?.node
-                          ?.sourceUrl
-                      }
+                      src={searchImages(item?.node?.name)}
                       fill
                       alt={item.node?.name}
                       className={styles.image}

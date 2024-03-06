@@ -36,3 +36,14 @@ body {
     object-fit: cover;
   }
 }
+
+.web-stories-list {
+  border: 1px solid red;
+  padding: 1rem;
+  display: none;
+}
+
+
+.sitemap ul li a {
+  font-size: 1.4rem;
+}

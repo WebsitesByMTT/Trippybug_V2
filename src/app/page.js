@@ -11,30 +11,6 @@ import ExploreNow from "@/components/exploreNowContent/ExploreNowContent";
 import ExploreNowContent from "@/components/exploreNowContent/ExploreNowContent";
 import Link from "next/link";
 
-const topDestinationData = [
-  {
-    id: 1,
-    imageSrc: "/topDestination/1.png",
-    name: "Paris",
-    reviews: 245,
-  },
-  {
-    id: 2,
-    imageSrc: "/topDestination/2.png",
-    name: "Mount fuji",
-    reviews: 320,
-  },
-  { id: 3, imageSrc: "/topDestination/3.png", name: "Bali", reviews: 180 },
-  {
-    id: 4,
-    imageSrc: "/topDestination/4.png",
-    name: "Switzerland",
-    reviews: 180,
-  },
-  { id: 5, imageSrc: "/topDestination/5.png", name: "Tokyo", reviews: 180 },
-  { id: 6, imageSrc: "/topDestination/6.png", name: "Berlin", reviews: 180 },
-];
-
 const Home = async () => {
   const { edges: exploreNowData } = await getPostsByCategoryName(
     "explore-the-world"
@@ -46,13 +22,18 @@ const Home = async () => {
     3
   );
 
+  const { edges: topDestination } = await getPostsByCategoryName(
+    "popular-recommended-hotels",
+    6
+  );
+
   return (
     <>
       {/* Hero  */}
       <Hero />
 
       {/* Explore Now  */}
-      <section className={styles[`explore-now`]}>
+      <section className={styles[`explore-now`]} id="explore-now">
         <div className={styles.container}>
           <Titles
             title="Explore Now"
@@ -64,7 +45,7 @@ const Home = async () => {
       </section>
 
       {/* Trending Now  */}
-      <section className={styles[`trending-now`]}>
+      <section className={styles[`trending-now`]} id="trending-now">
         <div className={styles.container}>
           <div className={styles.text}>
             <Titles
@@ -80,7 +61,7 @@ const Home = async () => {
       </section>
 
       {/* Top Destination  */}
-      <section className={styles.topDestination}>
+      <section className={styles.topDestination} id="top-destination">
         <div className={styles.container}>
           <Titles
             title="Top Destination"
@@ -90,26 +71,33 @@ const Home = async () => {
 
           <div className={styles.content}>
             <div className={styles.cards}>
-              {topDestinationData.map((e) => {
+              {topDestination.map((item) => {
                 return (
-                  <div className={styles.card} key={e.id}>
+                  <Link
+                    href={`/${item?.node?.slug}`}
+                    className={styles.card}
+                    key={item?.node?.postId}
+                  >
                     <div className={styles[`image-container`]}>
                       <Image
-                        src={e.imageSrc}
-                        alt="image"
+                        src={item?.node?.featuredImage?.node?.sourceUrl}
+                        alt={item?.node?.title}
                         fill
                         className={styles.image}
                       />
                     </div>
 
                     <div className={styles.detail}>
-                      <div className={styles.fav}>
-                        <Favourite />
-                      </div>
+                     
 
                       <div className={styles[`detail-titles`]}>
-                        <h6>{e.name}</h6>
-                        <p>{e.reviews}reviews</p>
+                        <h6>{item?.node?.title}</h6>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: item?.node?.excerpt,
+                          }}
+                          className={styles.desc}
+                        />
                       </div>
                       <div className={styles.btn}>
                         <button>
@@ -130,7 +118,7 @@ const Home = async () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -139,7 +127,10 @@ const Home = async () => {
       </section>
 
       {/* Looking for inspiration */}
-      <section className={styles.lookingForInspiration}>
+      <section
+        className={styles.lookingForInspiration}
+        id="looking-for-inspiration"
+      >
         <div className={styles.container}>
           <Titles
             title="looking for inspiration"

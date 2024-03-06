@@ -42,7 +42,23 @@
           display: flex;
           flex-direction: column;
           gap: 2rem;
-          // padding: 1rem;
+
+          &:hover {
+
+            .image-container {
+              .image {
+                transform: scale(1.1);
+              }
+            }
+
+            .detail {
+              &-titles {
+                h6 {
+                  color: map-get($colors, secondary);
+                }
+              }
+            }
+          }
           .image-container {
             width: 100%;
             padding-top: 70%;
@@ -54,6 +70,7 @@
               width: 100%;
               height: 100%;
               object-fit: cover;
+              transition: transform 0.2s ease-in-out;
             }
           }
 

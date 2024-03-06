@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import Link from "next/link";
+import { searchImages } from "@/app/lib/searchImages";
 
 const Categories = ({ data, searchParams }) => {
   const sliderRef = useRef(null);
@@ -47,6 +48,7 @@ const Categories = ({ data, searchParams }) => {
   const nextSlide = () => {
     sliderRef?.current?.slickNext();
   };
+
   return (
     <Slider {...carouselSettings} ref={sliderRef} className={styles.list}>
       <Link href={`/blogs?category=all`} className={styles.link}>
@@ -73,10 +75,7 @@ const Categories = ({ data, searchParams }) => {
                 }`}
               >
                 <Image
-                  src={
-                    item.node?.posts?.edges[0]?.node?.featuredImage?.node
-                      ?.sourceUrl
-                  }
+                  src={searchImages(item?.node?.name)}
                   fill
                   alt={item.node?.name}
                   className={styles.image}

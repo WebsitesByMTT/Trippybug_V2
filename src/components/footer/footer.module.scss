@@ -52,8 +52,9 @@
 
         .image-container {
           position: relative;
-          width: 10.9rem;
-          height: 4.9rem;
+          width: 14.9rem;
+          height: 8.9rem;
+          // padding: 1rem 0rem;
 
           @include media.for-greater-than-medium {
             width: 24.4rem;

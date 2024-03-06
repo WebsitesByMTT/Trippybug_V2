@@ -57,7 +57,6 @@ const NotFound = () => {
           </div>
         </div>
       </div>
-      <Footer color="#fff9ea" />
     </>
   );
 };

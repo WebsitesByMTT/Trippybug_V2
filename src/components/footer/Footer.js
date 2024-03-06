@@ -60,15 +60,20 @@ const Footer = ({ color }) => {
                   <Link href={"/hotels"}>Hotels</Link>
                 </li>
                 <li>
-                  <Link href={"Cars"}>Cars</Link>
+                  <Link href={"cars"}>Cars</Link>
                 </li>
               </ul>
               <ul>
                 <li>Navigation</li>
 
                 <li>About</li>
-                <li>Explore</li>
-                <li>Trending</li>
+                <li>
+                  <Link href={"/#explore-now"}>Explore</Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link href={"/#trending-now"}>Trending</Link>
+                </li>
                 <li>
                   <Link href={"/blogs"}>Blogs</Link>
                 </li>
@@ -80,7 +85,9 @@ const Footer = ({ color }) => {
                 <li>Privacy Policy</li>
                 <li>Terms Of Service</li>
                 <li>Cooking Policy</li>
-                <li>Sitemap</li>
+                <li>
+                  <Link href={"/sitemap"}>Sitemap</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -88,17 +95,17 @@ const Footer = ({ color }) => {
           <div className={styles.bottom}>
             <ul>
               <li>
-                <a href="#">
+                <a href="/">
                   <Image src="/facebook.svg" alt="fb" width={20} height={20} />{" "}
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   <Image src="/insta.png" alt="insta" width={20} height={20} />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   <Image
                     src="/Twitter.png"
                     alt="twitter"
@@ -108,12 +115,12 @@ const Footer = ({ color }) => {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   <Image src="/Youtube.png" alt="yt" width={20} height={20} />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/">
                   <Image src="/Linkdin.png" alt="link" width={20} height={20} />
                 </a>
               </li>

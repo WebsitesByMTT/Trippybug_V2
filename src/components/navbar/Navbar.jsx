@@ -163,13 +163,19 @@ const Navbar = () => {
             }`}
           >
             <li>
-              <Link href={"/flights "}>Flights</Link>
+              <Link href={"/flights"} style={{ color: menuColor }}>
+                Flights
+              </Link>
             </li>
             <li>
-              <Link href={"/hotels "}>Hotels</Link>
+              <Link href={"/hotels "} style={{ color: menuColor }}>
+                Hotels
+              </Link>
             </li>
             <li>
-              <Link href={"/cars "}>Cars</Link>
+              <Link href={"/cars "} style={{ color: menuColor }}>
+                Cars
+              </Link>
             </li>
           </ul>
         </div>
