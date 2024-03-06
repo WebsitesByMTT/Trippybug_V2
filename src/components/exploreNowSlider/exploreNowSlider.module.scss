@@ -22,6 +22,16 @@
     flex-basis: calc(25% - 2rem);
   }
 
+  &:hover {
+    .inner-container {
+      .image-container {
+        .image {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
   &-container {
     // padding: 1rem;
     border-radius: 2.3rem;
@@ -37,7 +47,7 @@
     .image-container {
       position: relative;
       // height: 40rem;
-      padding-top: 150%;
+      padding-top: 120%;
 
       border-radius: 1.6rem;
       overflow: hidden;
@@ -46,6 +56,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.2s ease-in-out;
       }
     }
   }

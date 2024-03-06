@@ -16,7 +16,12 @@ const Contact = ({ showContactHanlder, submiteHandler }) => {
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles[`image-container`]}>
-            <Image src={"/contact.png"} fill className={styles.image} />
+            <Image
+              src={"/contact.png"}
+              alt="Contact"
+              fill
+              className={styles.image}
+            />
           </div>
         </div>
         <div className={styles.right}>

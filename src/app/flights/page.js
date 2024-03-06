@@ -19,7 +19,9 @@ const Flights = async () => {
         desc="Experience the thrill of our most convenient flight with our creative travel options and wander through the sky effortlessly."
       />
       <div className={styles.flights}>
-        <SearchBox />
+        <div className={styles.search}>
+          <SearchBox />
+        </div>
         <div className={styles.container}>
           <div className={styles.text}>
             <Titles

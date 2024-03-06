@@ -414,7 +414,7 @@ export const getPostsByCategoryName = async (category, count) => {
     query PostsByCategoryName {
         posts(
             where: {categoryName: "${category}",orderby: {field: DATE, order: DESC}}
-            first: ${count | 6}
+            first: ${count || 6}
         ) {
             edges {
                 node {

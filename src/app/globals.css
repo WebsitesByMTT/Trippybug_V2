@@ -16,19 +16,10 @@ a {
 html {
   font-size: 62.5%;
   /* 10px */
-  font-size: 62.5%;
-  /* 10px */
 }
 
 body {
-  background: linear-gradient(
-    270deg,
-    #fdf2d6 0%,
-    #fff2d7 12.55%,
-    #fae6cd 33.53%,
-    #f1e8de 55.89%,
-    #d8dcdd 100%
-  );
+  background: white;
 }
 
 .slick-arrow.slick-next::before,
@@ -46,12 +37,13 @@ body {
   }
 }
 
-.wp-block-heading strong span {
-  color: #0f5a83 !important;
-  font-family: "__Poppins_dd2ae8", "__Poppins_Fallback_dd2ae8";
-  font-size: 26.796px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 37.682px;
-  text-transform: capitalize;
+.web-stories-list {
+  border: 1px solid red;
+  padding: 1rem;
+  display: none;
+}
+
+
+.sitemap ul li a {
+  font-size: 1.4rem;
 }
